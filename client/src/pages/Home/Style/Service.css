@@ -1,0 +1,135 @@
+.service-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.service-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.service-card:hover .service-card-inner {
+  transform: rotateY(180deg);
+}
+
+.service-card-front,
+.service-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.service-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.service-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.service-footer span {
+  color: #004062;
+  font-weight: 800;
+}
+
+.service-icon {
+  background: #00578c;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card-back {
+  background: #00578c;
+  color: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: rotateY(180deg);
+}
+
+.service-card-back h4 {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.service-card-back ul {
+  padding-left: 18px;
+  margin-bottom: 0;
+}
+
+.service-card-back li {
+  margin-bottom: 6px;
+}
+
+/* Remove default list style */
+.custom-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.custom-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+  /* space between icon and text */
+}
+
+.list-icon {
+  color: #f1c40f;
+  /* change icon color as you like */
+  font-size: 16px;
+  /* icon size */
+  flex-shrink: 0;
+}
+
+/* Remove default list style */
+.custom-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.custom-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+  /* space between icon and text */
+}
+
+.list-icon {
+  color: #fff;
+  /* change icon color as you like */
+  font-size: 16px;
+  /* icon size */
+  flex-shrink: 0;
+}
