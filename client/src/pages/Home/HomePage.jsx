@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import AboutSection from "./AboutSection";
 import Hero from "./HeroSection";
 import ServiceSection from "./ServiceSection";
-import WhyChoose from "./WhyChoose";
+// import WhyChoose from "./WhyChoose";
 
 const HomePage = () => {
   return (
@@ -12,7 +12,7 @@ const HomePage = () => {
       <Hero />
       <AboutSection />
       <ServiceSection />
-      <WhyChoose />
+      {/* <WhyChoose /> */}
       <Footer />
     </>
   );

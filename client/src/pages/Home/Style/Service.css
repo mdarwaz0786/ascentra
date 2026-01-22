@@ -52,6 +52,9 @@
 .service-footer span {
   color: #004062;
   font-weight: 800;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .service-icon {
@@ -95,41 +98,23 @@
   margin-bottom: 0;
 }
 
-.custom-list li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 6px;
-  gap: 8px;
-  /* space between icon and text */
-}
-
-.list-icon {
-  color: #f1c40f;
-  /* change icon color as you like */
-  font-size: 16px;
-  /* icon size */
-  flex-shrink: 0;
-}
-
-/* Remove default list style */
-.custom-list {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0;
-}
-
-.custom-list li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 6px;
-  gap: 8px;
-  /* space between icon and text */
-}
-
 .list-icon {
   color: #fff;
   /* change icon color as you like */
   font-size: 16px;
   /* icon size */
   flex-shrink: 0;
+}
+
+.custom-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+  /* space between icon and text */
+}
+
+.custom-list span {
+  margin-top: 0px;
+  padding-top: 0px;
 }

@@ -1,7 +1,6 @@
 import service1 from "../../assets/1.png";
 import service2 from "../../assets/2.png";
 import service3 from "../../assets/3.png";
-import service4 from "../../assets/4.png";
 import { FaArrowRight, FaGlobe } from "react-icons/fa";
 import "./Style/Service.css";
 
@@ -9,42 +8,33 @@ const ServiceSection = () => {
   const services = [
     {
       img: service1,
-      title: "Research & Assessment",
+      title: "Market Development",
       items: [
-        "Market research & analysis",
-        "Feasibility studies",
-        "Competitor benchmarking",
+        "Market research and policy mapping aligned to institutional strengths",
+        "Qualitative and quantitative insights, stakeholder consultations",
+        "Market positioning and regional prioritisation",
+        "Engagement with regulators, academic leaders, agents, corporates, and community bodies",
       ],
     },
     {
       img: service2,
-      title: "In-Country Representation",
-      items: ["Local market presence", "University partnerships", "Student engagement"],
-    },
-    {
-      img: service3,
-      title: "Operational Support",
-      items: ["Admissions processing", "On-ground coordination", "Compliance & reporting"],
-    },
-
-    {
-      img: service4,
-      title: "Research & Assessment",
+      title: "Market Entry",
       items: [
-        "Market research & analysis",
-        "Feasibility studies",
-        "Competitor benchmarking",
+        "Feasibility studies and strategic market entry blueprints",
+        "Entity formation, compliance guidance, and partner identification",
+        "Joint venture, representative office, and channel setup",
+        "End-to-end execution including legal structuring and regulator liaison",
       ],
     },
     {
-      img: service2,
-      title: "In-Country Representation",
-      items: ["Local market presence", "University partnerships", "Student engagement"],
-    },
-    {
       img: service3,
-      title: "Operational Support",
-      items: ["Admissions processing", "On-ground coordination", "Compliance & reporting"],
+      title: "Market Presence",
+      items: [
+        "Dedicated local representation led by senior directors",
+        "Student recruitment and admissions support",
+        "Institutional partnerships, alumni engagement, PR, and events",
+        "Ongoing marketing, agent management, and brand building",
+      ],
     },
   ];
 
