@@ -50,10 +50,10 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6">
             <h6 className="footer-title">Get in Touch</h6>
             <p className="footer-text mb-2">
-              info@yourcompany.com
+              contact@aceascentra.com
             </p>
             <p className="footer-text">
-              Mumbai, India
+              Delhi, India
             </p>
           </div>
 
@@ -61,7 +61,7 @@ const Footer = () => {
 
         {/* BOTTOM */}
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Your Company. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ACE ASCENTRA. All rights reserved.</p>
         </div>
 
       </div>

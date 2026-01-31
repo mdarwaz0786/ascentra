@@ -5,6 +5,11 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const toggleDropdown = (name) => {
+    setActiveDropdown(activeDropdown === name ? null : name);
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-white custom-navbar">
@@ -20,7 +25,7 @@ const Navbar = () => {
           className="navbar-toggler border-0"
           onClick={() => setOpen(!open)}
         >
-          {open ? <FaTimes size={22} /> : <FaBars size={22} />}
+          {open ? <FaTimes size={35} color="#00578c" /> : <FaBars size={35} color="#00578c" />}
         </button>
 
         {/* NAV LINKS */}
@@ -31,34 +36,73 @@ const Navbar = () => {
               <a className="nav-link active-link" href="#">Home</a>
             </li>
 
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-link" href="#">
-                About <FaChevronDown className="dropdown-icon" />
+            {/* ABOUT */}
+            <li
+              className={`nav-item dropdown ${activeDropdown === "about" ? "show" : ""
+                }`}
+            >
+              <a
+                className="nav-link dropdown-link"
+                href="#"
+                onClick={() => toggleDropdown("about")}
+              >
+                About
+                <FaChevronDown
+                  className={`dropdown-icon ${activeDropdown === "about" ? "rotate" : ""
+                    }`}
+                />
               </a>
+
               <ul className="dropdown-menu modern-dropdown">
                 <li><a className="dropdown-item" href="#">About Us</a></li>
                 <li><a className="dropdown-item" href="#">Approach</a></li>
               </ul>
             </li>
 
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-link" href="#">
-                Services <FaChevronDown className="dropdown-icon" />
+            {/* SERVICES */}
+            <li
+              className={`nav-item dropdown ${activeDropdown === "services" ? "show" : ""
+                }`}
+            >
+              <a
+                className="nav-link dropdown-link"
+                href="#"
+                onClick={() => toggleDropdown("services")}
+              >
+                Services
+                <FaChevronDown
+                  className={`dropdown-icon ${activeDropdown === "services" ? "rotate" : ""
+                    }`}
+                />
               </a>
+
               <ul className="dropdown-menu modern-dropdown">
-                <li><a className="dropdown-item" href="#">Research & Assesment</a></li>
+                <li><a className="dropdown-item" href="#">Research & Assessment</a></li>
                 <li><a className="dropdown-item" href="#">In-Country Representation</a></li>
                 <li><a className="dropdown-item" href="#">Academic Collaboration</a></li>
                 <li><a className="dropdown-item" href="#">Admission Compliance</a></li>
                 <li><a className="dropdown-item" href="#">Strategic Marketing</a></li>
-                <li><a className="dropdown-item" href="#">Operationl Support</a></li>
+                <li><a className="dropdown-item" href="#">Operational Support</a></li>
               </ul>
             </li>
 
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-link" href="#">
-                Media <FaChevronDown className="dropdown-icon" />
+            {/* MEDIA */}
+            <li
+              className={`nav-item dropdown ${activeDropdown === "media" ? "show" : ""
+                }`}
+            >
+              <a
+                className="nav-link dropdown-link"
+                href="#"
+                onClick={() => toggleDropdown("media")}
+              >
+                Media
+                <FaChevronDown
+                  className={`dropdown-icon ${activeDropdown === "media" ? "rotate" : ""
+                    }`}
+                />
               </a>
+
               <ul className="dropdown-menu modern-dropdown">
                 <li><a className="dropdown-item" href="#">Media</a></li>
                 <li><a className="dropdown-item" href="#">News & Blog</a></li>

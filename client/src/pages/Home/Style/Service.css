@@ -11,7 +11,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s ease;
+  transition: transform 2s ease;
   transform-style: preserve-3d;
 }
 
@@ -38,29 +38,28 @@
 
 .service-footer {
   position: absolute;
-  bottom: 16px;
+  bottom: 5px;
   left: 16px;
   right: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
   z-index: 2;
 }
 
 .service-footer span {
-  color: #004062;
-  font-weight: 800;
-  background-color: #fff;
+  color: #00578c;
+  font-weight: 700;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 .service-icon {
   background: #00578c;
-  width: 42px;
-  height: 42px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -100,9 +99,7 @@
 
 .list-icon {
   color: #fff;
-  /* change icon color as you like */
   font-size: 16px;
-  /* icon size */
   flex-shrink: 0;
 }
 
@@ -111,10 +108,10 @@
   align-items: center;
   margin-bottom: 6px;
   gap: 8px;
-  /* space between icon and text */
 }
 
 .custom-list span {
   margin-top: 0px;
   padding-top: 0px;
+  font-size: 14px;
 }

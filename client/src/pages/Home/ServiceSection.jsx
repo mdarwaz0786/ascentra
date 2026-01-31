@@ -1,13 +1,10 @@
-import service1 from "../../assets/1.png";
-import service2 from "../../assets/2.png";
-import service3 from "../../assets/3.png";
 import { FaArrowRight, FaGlobe } from "react-icons/fa";
 import "./Style/Service.css";
 
 const ServiceSection = () => {
   const services = [
     {
-      img: service1,
+      img: "/service/MarketDevelopment.png",
       title: "Market Development",
       items: [
         "Market research and policy mapping aligned to institutional strengths",
@@ -17,7 +14,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: service2,
+      img: "/service/MarketEntry.png",
       title: "Market Entry",
       items: [
         "Feasibility studies and strategic market entry blueprints",
@@ -27,7 +24,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: service3,
+      img: "/service/MarketPresence.png",
       title: "Market Presence",
       items: [
         "Dedicated local representation led by senior directors",
@@ -36,12 +33,22 @@ const ServiceSection = () => {
         "Ongoing marketing, agent management, and brand building",
       ],
     },
+    {
+      img: "/service/MarketExpansion.png",
+      title: "Market Expansion",
+      items: [
+        "Performance optimisation and ROI enhancement",
+        "Introduction of new programmes and delivery models",
+        "Multi-city expansion, digital learning, and partnership scaling",
+        "Support for mergers, acquisitions, and joint ventures",
+      ],
+    },
   ];
 
   return (
-    <section className="py-5" style={{ background: "#f5f5f5" }}>
+    <div className="py-5" style={{ background: "#f5f5f5" }}>
       <div className="container">
-        <h1 className="text-center fw-bold mb-5">Services</h1>
+        <h4 className="text-center fw-semibold mb-4">SERVICES</h4>
         <div className="row g-4">
           {services.map((service, index) => (
             <div className="col-lg-4 col-md-6" key={index}>
@@ -60,7 +67,7 @@ const ServiceSection = () => {
 
                   {/* BACK SIDE */}
                   <div className="service-card-back">
-                    <h4>{service.title}</h4>
+                    <h5>{service.title}</h5>
                     <ul className="custom-list">
                       {service.items.map((item, i) => (
                         <li key={i}>
@@ -76,7 +83,7 @@ const ServiceSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

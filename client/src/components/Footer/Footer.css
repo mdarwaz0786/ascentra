@@ -1,6 +1,6 @@
 /* FOOTER */
 .footer {
-  background: #0b1f33;
+  background: #07131f;
   color: #cfd8e3;
   padding: 70px 0 30px;
 }
@@ -25,15 +25,6 @@
   font-weight: 600;
   margin-bottom: 16px;
   position: relative;
-}
-
-.footer-title::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: #00578c;
-  margin-top: 6px;
 }
 
 /* LINKS */

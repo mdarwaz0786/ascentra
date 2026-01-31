@@ -1,9 +1,11 @@
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import AboutSection from "./AboutSection";
+import GrowthFrameworkSection from "./GrowthFrameworkSection";
 import Hero from "./HeroSection";
+import OurAdvantageSection from "./OurAdvantageSection";
+import OurValuesSection from "./OurValuesSection";
 import ServiceSection from "./ServiceSection";
-// import WhyChoose from "./WhyChoose";
 
 const HomePage = () => {
   return (
@@ -12,7 +14,9 @@ const HomePage = () => {
       <Hero />
       <AboutSection />
       <ServiceSection />
-      {/* <WhyChoose /> */}
+      <GrowthFrameworkSection />
+      <OurValuesSection />
+      <OurAdvantageSection />
       <Footer />
     </>
   );
