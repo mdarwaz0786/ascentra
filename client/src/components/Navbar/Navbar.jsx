@@ -25,7 +25,7 @@ const Navbar = () => {
           className="navbar-toggler border-0"
           onClick={() => setOpen(!open)}
         >
-          {open ? <FaTimes size={35} color="#00578c" /> : <FaBars size={35} color="#00578c" />}
+          {open ? <FaTimes size={25} color="#00578c" /> : <FaBars size={25} color="#00578c" />}
         </button>
 
         {/* NAV LINKS */}
