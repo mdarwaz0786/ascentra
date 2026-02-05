@@ -2,7 +2,7 @@ const HeroSection = () => {
   return (
     <section className="w-100">
       <img
-        src="/banner/banner.png"
+        src="/aboutus/AboutUsBanner.png"
         alt="Hero Banner"
         className="img-fluid w-100"
       />
