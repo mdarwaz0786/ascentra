@@ -1,10 +1,10 @@
+import LoadMoreButton from "../../components/Button/LoadMoreButton";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import MediaCard from "../../components/Media/MediaCard";
 import Navbar from "../../components/Navbar/Navbar";
 
 const MediaPage = () => {
-
   const mediaData = [
     {
       image: "/blog/blog.png",
@@ -70,6 +70,10 @@ const MediaPage = () => {
           ))}
         </div>
       </div>
+      <LoadMoreButton
+        onClick={() => console.log("clicked")}
+        className="px-3"
+      />
       <Footer />
     </>
   );

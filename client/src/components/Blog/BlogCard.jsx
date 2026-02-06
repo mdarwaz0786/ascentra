@@ -1,3 +1,5 @@
+import { BsShare } from "react-icons/bs";
+
 const BlogCard = ({
   image,
   dateTime,
@@ -8,7 +10,6 @@ const BlogCard = ({
 }) => {
   return (
     <div className="card border-0 shadow-sm rounded-4 h-100">
-
       {/* Image */}
       <img
         src={image}
@@ -27,7 +28,7 @@ const BlogCard = ({
         </div>
 
         {/* Title */}
-        <h5 className="fw-bold text-danger">
+        <h5 className="fw-bold">
           {title}
         </h5>
 
@@ -42,8 +43,9 @@ const BlogCard = ({
         <div className="d-flex justify-content-between align-items-center">
 
           <button
-            className="btn btn-danger rounded-pill px-4"
+            className="btn rounded-pill px-4"
             onClick={onReadMore}
+            style={{ background: "#333", color: "#fff" }}
           >
             Read More
           </button>
@@ -52,9 +54,8 @@ const BlogCard = ({
             className="btn btn-light border rounded-circle"
             onClick={onShare}
           >
-            <i className="bi bi-share"></i>
+            <BsShare />
           </button>
-
         </div>
       </div>
     </div>

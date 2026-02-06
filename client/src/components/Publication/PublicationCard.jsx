@@ -1,3 +1,5 @@
+import { BsShare } from "react-icons/bs";
+
 const PublicationCard = ({
   image,
   title,
@@ -19,7 +21,7 @@ const PublicationCard = ({
       {/* Body */}
       <div className="card-body d-flex flex-column">
 
-        <h5 className="fw-bold text-danger">
+        <h5 className="fw-bold">
           {title}
         </h5>
 
@@ -35,7 +37,7 @@ const PublicationCard = ({
         <div className="d-flex justify-content-between align-items-center">
 
           <button
-            className="btn btn-danger px-4 rounded-pill"
+            className="btn px-4 rounded-pill"
             onClick={onReadMore}
           >
             Read More
@@ -45,7 +47,7 @@ const PublicationCard = ({
             className="btn btn-light border rounded-circle"
             onClick={onShare}
           >
-            <i className="bi bi-share"></i>
+            <BsShare />
           </button>
 
         </div>
