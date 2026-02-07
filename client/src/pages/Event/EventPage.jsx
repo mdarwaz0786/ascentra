@@ -3,7 +3,6 @@ import EventCard from "../../components/Event/EventCard";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Navbar from "../../components/Navbar/Navbar";
-import PublicationCard from "../../components/Publication/PublicationCard";
 
 const EventPage = () => {
   const data = [

@@ -9,6 +9,8 @@ import EventPage from "./pages/Event/EventPage";
 import PublicationPage from "./pages/Publication/PublicationPage";
 import BlogPage from "./pages/Blog/BlogPage";
 import MediaPage from "./pages/Media/MediaPage";
+import ContactusPage from "./pages/Contactus/ContactusPage";
+import CareerPage from "./pages/Career/CareerPage";
 
 const App = () => {
   return (
@@ -16,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about-us" element={<AboutusPage />} />
+        <Route path="/contact-us" element={<ContactusPage />} />
         <Route path="/market-development" element={<MarketDevelopmentServicePage />} />
         <Route path="/market-entry" element={<MarketEntryServicePage />} />
         <Route path="/market-presence" element={<MarketPresenceServicePage />} />
@@ -24,6 +27,7 @@ const App = () => {
         <Route path="/event" element={<EventPage />} />
         <Route path="/publication" element={<PublicationPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/career" element={<CareerPage />} />
       </Routes>
     </>
   );

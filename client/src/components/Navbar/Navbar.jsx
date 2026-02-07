@@ -110,20 +110,19 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">Careers</a>
+              <Link className="nav-link" to="/career">Careers</Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">Contact Us</a>
+              <Link className="nav-link" to="/contact-us">Contact Us</Link>
             </li>
 
             {/* LINKEDIN */}
             <li className="nav-item ms-lg-3">
-              <a href="#" className="linkedin-btn">
+              <Link to="https://www.linkedin.com/" target="_blank" className="linkedin-btn">
                 <FaLinkedinIn />
-              </a>
+              </Link>
             </li>
-
           </ul>
         </div>
       </div>
