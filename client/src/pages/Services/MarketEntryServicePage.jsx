@@ -30,7 +30,7 @@ const MarketEntryServicePage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/banner.png" />
+      <Hero src="/banner/MarketEntry.png" />
       <div className="container py-5">
         <ServiceHeader
           title="Market Entry"

@@ -47,7 +47,7 @@ const BlogPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/banner.png" />
+      <Hero src="/banner/NewsAndBlog.png" />
       <div className="container my-5">
         <div className="row g-4">
           {data.map((item, index) => (

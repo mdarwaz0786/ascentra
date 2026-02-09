@@ -11,10 +11,12 @@ import BlogPage from "./pages/Blog/BlogPage";
 import MediaPage from "./pages/Media/MediaPage";
 import ContactusPage from "./pages/Contactus/ContactusPage";
 import CareerPage from "./pages/Career/CareerPage";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const App = () => {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about-us" element={<AboutusPage />} />

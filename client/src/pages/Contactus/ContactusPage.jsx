@@ -7,7 +7,7 @@ const ContactusPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/banner.png" />
+      <Hero src="/banner/Contact.png" />
       <div className="container-fluid p-0">
         {/* ================= TOP INFO SECTION ================= */}
         <div className="bg-light py-5">

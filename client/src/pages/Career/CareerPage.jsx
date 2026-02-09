@@ -10,7 +10,7 @@ const CareerPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/banner.png" />
+      <Hero src="/banner/Career.png" />
       <WhyWorkWithUsSection />
       <OurValuesSection />
       <CurrentOpeningSection />

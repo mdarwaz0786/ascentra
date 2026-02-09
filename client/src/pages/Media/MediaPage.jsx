@@ -5,7 +5,7 @@ import MediaCard from "../../components/Media/MediaCard";
 import Navbar from "../../components/Navbar/Navbar";
 
 const MediaPage = () => {
-  const mediaData = [
+  const data = [
     {
       image: "/blog/blog.png",
       dateTime: "12 Nov 2024 | 12:05 PM IST",
@@ -53,10 +53,10 @@ const MediaPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/banner.png" />
+      <Hero src="/banner/Media.png" />
       <div className="container my-5">
         <div className="row g-4">
-          {mediaData.map((item, index) => (
+          {data.map((item, index) => (
             <div key={index} className="col-12 col-md-6 col-lg-4">
               <MediaCard
                 image={item.image}

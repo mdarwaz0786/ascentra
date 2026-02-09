@@ -47,7 +47,7 @@ const PublicationPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/banner.png" />
+      <Hero src="/banner/Publications.png" />
       <div className="container my-5">
         <div className="row g-4">
           {data.map((item, index) => (
