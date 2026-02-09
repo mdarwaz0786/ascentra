@@ -110,4 +110,8 @@
   .dropdown.show .dropdown-menu {
     display: block;
   }
+
+  .navbar-logo {
+    height: 40px;
+  }
 }
