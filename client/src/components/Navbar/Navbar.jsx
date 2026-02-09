@@ -2,9 +2,10 @@ import { useState } from "react";
 import { FaBars, FaTimes, FaLinkedinIn, FaChevronDown } from "react-icons/fa";
 import logo from "../../assets/logo.png";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -34,7 +35,7 @@ const Navbar = () => {
           <ul className="navbar-nav ms-auto align-items-lg-center">
 
             <li className="nav-item">
-              <Link className="nav-link active-link" to="/">Home</Link>
+              <Link className={`nav-link ${location.pathname === "/" ? "active-link" : ""}`} to="/">Home</Link>
             </li>
 
             {/* ABOUT */}
@@ -42,7 +43,11 @@ const Navbar = () => {
               className={`nav-item dropdown ${activeDropdown == "about" ? "show" : ""}`}
             >
               <a
-                className="nav-link dropdown-link"
+                className={`nav-link dropdown-link
+                   ${location.pathname == "/about-us"
+                    ? "active-link"
+                    : ""}`
+                }
                 href="#"
                 onClick={() => toggleDropdown("about")}
               >
@@ -62,7 +67,14 @@ const Navbar = () => {
               className={`nav-item dropdown ${activeDropdown === "services" ? "show" : ""}`}
             >
               <a
-                className="nav-link dropdown-link"
+                className={`nav-link dropdown-link
+                   ${location.pathname == "/market-development" ||
+                    location.pathname == "/market-entry" ||
+                    location.pathname == "/market-presence" ||
+                    location.pathname == "/market-expansion"
+                    ? "active-link"
+                    : ""}`
+                }
                 href="#"
                 onClick={() => toggleDropdown("services")}
               >
@@ -85,7 +97,12 @@ const Navbar = () => {
               className={`nav-item dropdown ${activeDropdown === "media" ? "show" : ""}`}
             >
               <a
-                className="nav-link dropdown-link"
+                className={`nav-link dropdown-link
+                   ${location.pathname == "/media" ||
+                    location.pathname == "/blog"
+                    ? "active-link"
+                    : ""}`
+                }
                 href="#"
                 onClick={() => toggleDropdown("media")}
               >
@@ -102,19 +119,19 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/publication">Publications</Link>
+              <Link className={`nav-link ${location.pathname === "/publication" ? "active-link" : ""}`} to="/publication">Publications</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/event">Events</Link>
+              <Link className={`nav-link ${location.pathname === "/event" ? "active-link" : ""}`} to="/event">Events</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/career">Careers</Link>
+              <Link className={`nav-link ${location.pathname === "/career" ? "active-link" : ""}`} to="/career">Careers</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/contact-us">Contact Us</Link>
+              <Link className={`nav-link ${location.pathname === "/contact-us" ? "active-link" : ""}`} to="/contact-us">Contact Us</Link>
             </li>
 
             {/* LINKEDIN */}
