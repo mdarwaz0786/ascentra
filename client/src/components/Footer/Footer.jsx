@@ -7,9 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-
         <div className="row gy-4">
-
           {/* BRAND */}
           <div className="col-lg-4 col-md-6">
             <img src={logo} alt="logo" className="footer-logo" />
@@ -32,6 +30,7 @@ const Footer = () => {
               <li><Link to="/about-us">About Us</Link></li>
               <li><Link to="/contact-us">Contact Us</Link></li>
               <li><Link to="/career">Careers</Link></li>
+              <li><Link to="/our-core-strength">Our Core Strength</Link></li>
             </ul>
           </div>
 
@@ -52,7 +51,7 @@ const Footer = () => {
             <ul className="footer-links">
               <li><Link to="/blog">News & Blog</Link></li>
               <li><Link to="/media">Media</Link></li>
-              <li><Link to="/event">Events</Link></li>
+              {/* <li><Link to="/event">Events</Link></li> */}
               <li><Link to="/publication">Publications</Link></li>
             </ul>
           </div>

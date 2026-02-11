@@ -1,8 +1,7 @@
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Navbar from "../../components/Navbar/Navbar";
-import CurrentOpeningSection from "./OurOpeningSection";
-import OurValuesSection from "./OurValuesSection";
+import CareerApplySection from "./CareerApplySection";
 import WhyWorkWithUsSection from "./WhyWorkWithUsSection";
 
 const CareerPage = () => {
@@ -12,8 +11,7 @@ const CareerPage = () => {
       <Navbar />
       <Hero src="/banner/Career.png" />
       <WhyWorkWithUsSection />
-      <OurValuesSection />
-      <CurrentOpeningSection />
+      <CareerApplySection />
       <Footer />
     </>
   );

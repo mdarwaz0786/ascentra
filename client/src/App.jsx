@@ -12,6 +12,7 @@ import MediaPage from "./pages/Media/MediaPage";
 import ContactusPage from "./pages/Contactus/ContactusPage";
 import CareerPage from "./pages/Career/CareerPage";
 import ScrollToTop from "./utils/ScrollToTop";
+import TestimonialPage from "./pages/Testimonial/TestimonialPage";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/publication" element={<PublicationPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/career" element={<CareerPage />} />
+        <Route path="/our-core-strength" element={<TestimonialPage />} />
       </Routes>
     </>
   );

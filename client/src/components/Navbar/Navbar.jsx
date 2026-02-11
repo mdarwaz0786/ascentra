@@ -44,7 +44,8 @@ const Navbar = () => {
             >
               <a
                 className={`nav-link dropdown-link
-                   ${location.pathname == "/about-us"
+                   ${location.pathname == "/about-us" ||
+                    location.pathname == "/our-core-strength"
                     ? "active-link"
                     : ""}`
                 }
@@ -59,6 +60,7 @@ const Navbar = () => {
 
               <ul className="dropdown-menu modern-dropdown">
                 <li><Link className="dropdown-item" to="/about-us">About Us</Link></li>
+                <li><Link className="dropdown-item" to="/our-core-strength">Our Core Strength</Link></li>
               </ul>
             </li>
 
@@ -122,9 +124,9 @@ const Navbar = () => {
               <Link className={`nav-link ${location.pathname === "/publication" ? "active-link" : ""}`} to="/publication">Publications</Link>
             </li>
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className={`nav-link ${location.pathname === "/event" ? "active-link" : ""}`} to="/event">Events</Link>
-            </li>
+            </li> */}
 
             <li className="nav-item">
               <Link className={`nav-link ${location.pathname === "/career" ? "active-link" : ""}`} to="/career">Careers</Link>

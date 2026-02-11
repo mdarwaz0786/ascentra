@@ -51,7 +51,7 @@ const ServiceSection = () => {
         <h4 className="text-center fw-semibold mb-4">SERVICES</h4>
         <div className="row g-4">
           {services.map((service, index) => (
-            <div className="col-lg-4 col-md-6" key={index}>
+            <div className="col-lg-6 col-md-6" key={index}>
               <div className="service-card">
                 <div className="service-card-inner">
                   {/* FRONT SIDE */}

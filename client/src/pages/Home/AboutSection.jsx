@@ -32,7 +32,7 @@ const AboutSection = () => {
             </p>
 
             <p className="fs-5 mb-4">
-              From day one, we operate as your trusted in-market partner,
+              From day one, we operate as your trusted in country,
               providing advisory, liaison, compliance, and operational support
               to ensure a strong, sustainable foundation.
             </p>
