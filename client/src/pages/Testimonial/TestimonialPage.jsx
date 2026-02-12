@@ -9,7 +9,7 @@ const TestimonialPage = () => {
       id: 1,
       description: "A senior international higher education professional with over 30 years of experience, including two decades in global education. Formerly with the British Council, he has led India operations for Manchester Metropolitan University, Cardiff University, and Durham University. Somnath advises international institutions on student recruitment, academic partnerships, research collaboration, and industry engagement. He is a co-facilitator of the International Officers Training Programme delivered by the British Council and State Governments. His work has enabled sustainable India–UK partnerships through mobility programmes, global grants, alumni engagement, and industry-academia initiatives.",
       name: "Somnath Nandy",
-      image: "/testimonial/AnilKumar.jpeg",
+      image: "/testimonial/SamanthReddy.jpeg",
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const TestimonialPage = () => {
       id: 3,
       description: "Guneet is a leading brand strategy and marketing initiatives with a strong focus on student outreach and engagement. She drives brand positioning, campaign planning, and partnership development to build meaningful connections with young audiences. With a sharp eye for consistency and impact, she ensures all initiatives align with the company’s identity and long-term goals. Her approach blends strategic thinking with executional excellence, contributing to sustained brand growth and visibility.",
       name: "Guneet Kaur",
-      image: "/testimonial/AnilKumar.jpeg",
+      image: "/testimonial/GuneetKaur.jpeg",
     },
   ];
 
