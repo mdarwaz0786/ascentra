@@ -9,21 +9,23 @@ const MarketPresenceServicePage = () => {
   const servicesData = [
     {
       icon: "/service/icon.png",
-      title: "Market Analysis & Research",
-      description:
-        "Understanding the intricacies of the South Asian education market requires more than surface-level insights. Our in-depth, data-driven research uncovers critical trends, student preferences, and emerging opportunities, providing a comprehensive view of the market’s potential and challenges. By conducting competitive benchmarking, we highlight your institution’s positioning against key players, equipping you with actionable insights to navigate this dynamic region effectively."
+      title: "Dedicated local representation led by senior directors",
+      description: "Dedicated local representation led by senior directors ensures strong on-ground leadership, strategic oversight, and relationship management. Senior-level engagement enhances credibility with regulators, partners, and stakeholders while enabling informed decision-making, faster issue resolution, and sustained growth within priority regional and international markets.",
     },
     {
       icon: "/service/icon.png",
-      title: "Go-To-Market Strategy",
-      description:
-        "Strategically establish your institution’s presence in South Asia with a bespoke roadmap. We help you navigate the region’s geographic and cultural diversity, pinpoint high-potential markets, and identify ideal partners. This approach positions your university for long-term success and impactful engagement."
+      title: "Student recruitment and admissions support",
+      description: "Student recruitment and admissions support provide end-to-end assistance in outreach, application management, screening, and enrolment processes. Strategic campaigns, agent coordination, and data-driven targeting enhance lead conversion, improve student quality, streamline admissions workflows, and strengthen institutional presence across priority domestic and international markets.",
     },
     {
       icon: "/service/icon.png",
-      title: "Go-To-Market Strategy",
-      description:
-        "Strategically establish your institution’s presence in South Asia with a bespoke roadmap. We help you navigate the region’s geographic and cultural diversity, pinpoint high-potential markets, and identify ideal partners. This approach positions your university for long-term success and impactful engagement."
+      title: "Institutional partnerships, alumni engagement, PR, and events",
+      description: "Institutional partnerships, alumni engagement, PR, and events strengthen brand visibility and long-term relationships. Strategic collaborations, active alumni networks, targeted media outreach, and curated events enhance reputation, foster stakeholder trust, expand market reach, and create sustainable opportunities for institutional growth and global engagement.",
+    },
+    {
+      icon: "/service/icon.png",
+      title: "Ongoing marketing, agent management, and brand building",
+      description: "Ongoing marketing, agent management, and brand building ensure sustained visibility and consistent lead generation across target markets. Structured agent networks, performance monitoring, and integrated campaigns strengthen positioning, enhance engagement, and drive measurable growth while maintaining brand integrity and long-term institutional credibility.",
     },
   ];
 

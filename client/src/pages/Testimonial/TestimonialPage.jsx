@@ -44,15 +44,12 @@ const TestimonialPage = () => {
           {/* ================= SECTION ONE ================= */}
           <div className="text-center mb-5">
             <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR LEADERSHIP</h2>
-            <p className=" px-3 px-md-4 px-lg-5">
-              Our leadership is field-tested, not theoretical. Decades of hands-on experience, strong institutional networks, and proven delivery ensure every engagement is grounded, effective, and outcome focused.
-            </p>
           </div>
 
-          <div className="row px-3 px-md-4 px-lg-5">
-            {testimonialsSectionOne.map((item) => (
-              <div key={item.id} className="col-lg-4 col-md-6 mb-4">
-                <TestimonialCard {...item} />
+          <div className="row">
+            {testimonialsSectionOne.map((item, index) => (
+              <div key={item.id} className="col-lg-12 col-md-12 mb-4">
+                <TestimonialCard key={index} index={index} {...item} />
               </div>
             ))}
           </div>
@@ -61,10 +58,10 @@ const TestimonialPage = () => {
           <div className="text-center mt-5 mb-5">
             <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">Strategic Advisor (USA)</h2>
           </div>
-          <div className="row px-3 px-md-4 px-lg-5">
-            {testimonialsSectionTwo.map((item) => (
-              <div key={item.id} className="col-lg-4 col-md-6 mb-4">
-                <TestimonialCard {...item} />
+          <div className="row">
+            {testimonialsSectionTwo.map((item, index) => (
+              <div key={item.id} className="col-lg-12 col-md-12 mb-4">
+                <TestimonialCard key={index} index={index} {...item} />
               </div>
             ))}
           </div>

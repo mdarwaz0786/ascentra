@@ -26,10 +26,9 @@ const GrowthFrameworkSection = () => {
             <img
               src="/aboutus/OURGROWTHFRAMEWORK.png"
               alt="About Us"
-              className="img-fluid w-100 h-100 rounded"
+              className="img-fluid rounded"
             />
           </div>
-
         </div>
       </div>
     </div>

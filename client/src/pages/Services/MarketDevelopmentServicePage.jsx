@@ -9,22 +9,24 @@ const MarketDevelopmentServicePage = () => {
   const servicesData = [
     {
       icon: "/service/icon.png",
-      title: "Market Analysis & Research",
-      description:
-        "Understanding the intricacies of the South Asian education market requires more than surface-level insights. Our in-depth, data-driven research uncovers critical trends, student preferences, and emerging opportunities, providing a comprehensive view of the market’s potential and challenges. By conducting competitive benchmarking, we highlight your institution’s positioning against key players, equipping you with actionable insights to navigate this dynamic region effectively."
+      title: "Market research and policy mapping aligned to institutional strengths",
+      description: "Market research and policy mapping aligned to institutional strengths focuses on identifying emerging trends, regulatory frameworks, and sector demands while evaluating core capabilities. It helps institutions design targeted strategies, optimize resources, ensure compliance, and enhance competitive positioning in both domestic and international markets."
     },
     {
       icon: "/service/icon.png",
-      title: "Go-To-Market Strategy",
-      description:
-        "Strategically establish your institution’s presence in South Asia with a bespoke roadmap. We help you navigate the region’s geographic and cultural diversity, pinpoint high-potential markets, and identify ideal partners. This approach positions your university for long-term success and impactful engagement."
+      title: "Qualitative and quantitative insights, stakeholder consultations",
+      description: "Qualitative and quantitative insights, stakeholder consultations involve collecting data through surveys, interviews, and analytics to understand trends, expectations, and performance gaps. Engaging key stakeholders ensures informed decision-making, strengthens collaboration, enhances transparency, and supports the development of sustainable, evidence-based institutional strategies.",
     },
     {
       icon: "/service/icon.png",
-      title: "Go-To-Market Strategy",
-      description:
-        "Strategically establish your institution’s presence in South Asia with a bespoke roadmap. We help you navigate the region’s geographic and cultural diversity, pinpoint high-potential markets, and identify ideal partners. This approach positions your university for long-term success and impactful engagement."
+      title: "Market positioning and regional prioritisation",
+      description: "Market positioning and regional prioritisation focus on identifying competitive advantages, target segments, and high-potential geographies. By analysing demand patterns, economic indicators, and institutional strengths, organisations can allocate resources strategically, enhance brand visibility, and maximise growth opportunities in priority regional and global markets.",
     },
+    {
+      icon: "/service/icon.png",
+      title: "Engagement with regulators, academic leaders, agents, corporates, and community bodies",
+      description: "Engagement with regulators, academic leaders, agents, corporates, and community bodies ensures strong partnerships, policy alignment, and collaborative growth. Strategic communication builds trust, supports compliance, enhances reputation, and creates opportunities for academic expansion, industry integration, and sustainable community impact across diverse regional markets.",
+    }
   ];
 
   return (

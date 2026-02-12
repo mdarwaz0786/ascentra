@@ -9,7 +9,7 @@ const AboutusSection = () => {
             <img
               src="/aboutus/AboutUs.png"
               alt="About Us"
-              className="img-fluid w-100 h-100 rounded"
+              className="img-fluid rounded"
             />
           </div>
 

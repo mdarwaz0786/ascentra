@@ -1,56 +1,41 @@
-import { useState } from "react";
-
 const TestimonialCard = ({
   description,
   image,
   name,
   designation,
-  organization,
+  index,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleDescription = () => {
-    setIsExpanded(!isExpanded);
-  };
-
-  const shortText =
-    description.length > 400
-      ? description.substring(0, 400) + "..."
-      : description;
+  const isReverse = index % 2 !== 0;
+  const bgColor = index % 2 !== 0 ? "#f5f5f5" : "#fff";
 
   return (
-    <div className="card border-0 shadow-sm rounded-4 p-4 h-100 d-flex flex-column">
-      {/* Top Content */}
-      <div>
-        <p className="text-muted mb-2" style={{ fontSize: "18px" }}>
-          {isExpanded ? description : shortText}
-        </p>
-        {description.length > 180 && (
-          <button
-            className="btn btn-link text-danger fw-semibold p-0"
-            onClick={toggleDescription}
-          >
-            {isExpanded ? "See Less" : "See More"}
-          </button>
-        )}
-      </div>
+    <div className="py-5" style={{ backgroundColor: bgColor }}>
+      <div className="container">
+        <div
+          className={`row g-5 ${isReverse ? "flex-lg-row-reverse" : ""}`}
+        >
+          {/* Image */}
+          <div className="col-lg-5 text-center">
+            <img
+              src={image}
+              alt={name}
+              className="img-fluid rounded-4"
+              style={{
+                width: "100%",
+                height: "400px",
+                objectFit: "cover",
+              }}
+            />
+          </div>
 
-      {/* Bottom Section */}
-      <div className="d-flex align-items-center gap-3 mt-auto pt-3">
-        <img
-          src={image}
-          alt={name}
-          className="rounded-circle"
-          style={{
-            width: "100px",
-            height: "100px",
-            objectFit: "cover",
-          }}
-        />
-        <div>
-          <h5 className="fw-semibold mb-1">{name}</h5>
-          <p className="mb-1">{designation}</p>
-          <p className="mb-0">{organization}</p>
+          {/* Content */}
+          <div className="col-lg-7">
+            <h4 className="fw-bold mb-1">{name}</h4>
+            <p className="text-muted mb-3">{designation}</p>
+            <p className="fs-5 mb-4">
+              {description}
+            </p>
+          </div>
         </div>
       </div>
     </div>
