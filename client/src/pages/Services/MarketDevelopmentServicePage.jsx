@@ -8,22 +8,22 @@ const MarketDevelopmentServicePage = () => {
 
   const servicesData = [
     {
-      icon: "/service/icon.png",
+      icon: "/service/icon1.png",
       title: "Market research and policy mapping aligned to institutional strengths",
       description: "Market research and policy mapping aligned to institutional strengths focuses on identifying emerging trends, regulatory frameworks, and sector demands while evaluating core capabilities. It helps institutions design targeted strategies, optimize resources, ensure compliance, and enhance competitive positioning in both domestic and international markets."
     },
     {
-      icon: "/service/icon.png",
+      icon: "/service/icon2.png",
       title: "Qualitative and quantitative insights, stakeholder consultations",
       description: "Qualitative and quantitative insights, stakeholder consultations involve collecting data through surveys, interviews, and analytics to understand trends, expectations, and performance gaps. Engaging key stakeholders ensures informed decision-making, strengthens collaboration, enhances transparency, and supports the development of sustainable, evidence-based institutional strategies.",
     },
     {
-      icon: "/service/icon.png",
+      icon: "/service/icon3.png",
       title: "Market positioning and regional prioritisation",
       description: "Market positioning and regional prioritisation focus on identifying competitive advantages, target segments, and high-potential geographies. By analysing demand patterns, economic indicators, and institutional strengths, organisations can allocate resources strategically, enhance brand visibility, and maximise growth opportunities in priority regional and global markets.",
     },
     {
-      icon: "/service/icon.png",
+      icon: "/service/icon4.png",
       title: "Engagement with regulators, academic leaders, agents, corporates, and community bodies",
       description: "Engagement with regulators, academic leaders, agents, corporates, and community bodies ensures strong partnerships, policy alignment, and collaborative growth. Strategic communication builds trust, supports compliance, enhances reputation, and creates opportunities for academic expansion, industry integration, and sustainable community impact across diverse regional markets.",
     }

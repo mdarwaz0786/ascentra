@@ -1,10 +1,11 @@
 import { FaArrowRight, FaGlobe } from "react-icons/fa";
+import { } from "react-icons/fa";
 import "./Style/Service.css";
 
 const ServiceSection = () => {
   const services = [
     {
-      img: "/service/MarketDevelopment.png",
+      img: "/service/NewMarketDevelopment.png",
       title: "Market Development",
       items: [
         "Market research and policy mapping aligned to institutional strengths",
@@ -14,7 +15,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: "/service/MarketEntry.png",
+      img: "/service/NewMarketEntry.png",
       title: "Market Entry",
       items: [
         "Feasibility studies and strategic market entry blueprints",
@@ -24,7 +25,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: "/service/MarketPresence.png",
+      img: "/service/NewMarketPresence.png",
       title: "Market Presence",
       items: [
         "Dedicated local representation led by senior directors",
@@ -34,7 +35,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: "/service/MarketExpansion.png",
+      img: "/service/NewMarketExpansion.png",
       title: "Market Expansion",
       items: [
         "Performance optimisation and ROI enhancement",
