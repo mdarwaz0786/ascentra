@@ -35,7 +35,7 @@ const MarketPresenceServicePage = () => {
       <Hero src="/banner/NewMarketPresence.png" />
       <div className="container py-5">
         <ServiceHeader
-          title="Market Presence"
+          title="Events, Outreach & Engagement"
           subtitle="India and South Asia's vast and diverse landscape presents immense opportunities for international universities seeking to expand their footprint. We offer tailored research and assessment solutions designed to ensure your institution’s growth is both impactful and long-term."
         />
         <div className="row g-4">

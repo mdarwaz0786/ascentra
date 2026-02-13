@@ -87,10 +87,10 @@ const Navbar = () => {
               </a>
 
               <ul className="dropdown-menu modern-dropdown">
-                <li><Link className="dropdown-item" to="/market-development">Market Development</Link></li>
-                <li><Link className="dropdown-item" to="/market-entry">Market Entry</Link></li>
-                <li><Link className="dropdown-item" to="/market-presence">Market Presence</Link></li>
-                <li><Link className="dropdown-item" to="/market-expansion">Market Expansion</Link></li>
+                <li><Link className="dropdown-item" to="/market-development">Research, Academic & Innovation Partnerships</Link></li>
+                <li><Link className="dropdown-item" to="/market-entry">In-Country Representation & Market Growth</Link></li>
+                <li><Link className="dropdown-item" to="/market-presence">Events, Outreach & Engagement</Link></li>
+                <li><Link className="dropdown-item" to="/market-expansion">Operational & Compliance Support</Link></li>
               </ul>
             </li>
 
