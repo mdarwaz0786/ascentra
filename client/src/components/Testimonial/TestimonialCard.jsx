@@ -7,6 +7,7 @@ const TestimonialCard = ({
 }) => {
   const isReverse = index % 2 !== 0;
   const bgColor = index % 2 !== 0 ? "#f5f5f5" : "#fff";
+  const imageBgColor = index % 2 !== 0 ? "#ffffff" : "#f5f5f5";
 
   return (
     <div className="py-5" style={{ backgroundColor: bgColor }}>
@@ -15,14 +16,19 @@ const TestimonialCard = ({
           className={`row g-5 ${isReverse ? "flex-lg-row-reverse" : ""}`}
         >
           {/* Image */}
-          <div className="col-lg-5 text-center">
+          <div
+            className="col-lg-5 text-center"
+            style={{
+              backgroundColor: imageBgColor,
+            }}
+          >
             <img
               src={image}
               alt={name}
-              className="img-fluid rounded-4"
+              className="rounded-4"
               style={{
                 width: "100%",
-                height: "400px",
+                height: "100%",
                 objectFit: "cover",
               }}
             />

@@ -5,7 +5,7 @@ import "./Style/Service.css";
 const ServiceSection = () => {
   const services = [
     {
-      img: "/service/NewMarketDevelopment.png",
+      img: "/service/service1.png",
       title: "Research, Academic & Innovation Partnerships",
       items: [
         "Advance your institution’s global research and innovation ambitions across borders",
@@ -16,7 +16,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: "/service/NewMarketEntry.png",
+      img: "/service/service2.png",
       title: "In-Country Representation & Market Growth",
       items: [
         "Establish and manage your dedicated in-country presence with experienced local teams",
@@ -27,7 +27,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: "/service/NewMarketPresence.png",
+      img: "/service/service3.png",
       title: "Events, Outreach & Engagement",
       items: [
         "Conceptualise and deliver high-impact institutional and conferences and networking events",
@@ -38,7 +38,7 @@ const ServiceSection = () => {
       ],
     },
     {
-      img: "/service/NewMarketExpansion.png",
+      img: "/service/service4.png",
       title: "Operational & Compliance Support",
       items: [
         "Provide end-to-end operational support for seamless market presence",

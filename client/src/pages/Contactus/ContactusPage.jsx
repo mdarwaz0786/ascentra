@@ -30,8 +30,10 @@ const ContactusPage = () => {
                   </div>
                   <h5 className="fw-semibold">Our Address</h5>
                   <p className="text-muted mb-0">
-                    123 Main Street<br />
-                    New Delhi, India
+                    A-143, Upper Ground Floor, Neeti Bagh, New Delhi-110049, India <br />
+                    T: +91-11-40522433/40536792 <br />
+                    E: xxxxx@ace.com <br />
+                    Mobile: +91-9650050798
                   </p>
                 </div>
               </div>
@@ -45,8 +47,7 @@ const ContactusPage = () => {
                     </span>
                   </div>
                   <h5 className="fw-semibold">Email Us</h5>
-                  <p className="text-muted mb-0">support@example.com</p>
-                  <p className="text-muted mb-0">info@example.com</p>
+                  <p className="text-muted mb-0">contact@ace.com</p>
                 </div>
               </div>
 
@@ -59,8 +60,7 @@ const ContactusPage = () => {
                     </span>
                   </div>
                   <h5 className="fw-semibold">Call Us</h5>
-                  <p className="text-muted mb-0">+91 98765 43210</p>
-                  <p className="text-muted mb-0">+91 91234 56789</p>
+                  <p className="text-muted mb-0">+91-9650050798</p>
                 </div>
               </div>
             </div>

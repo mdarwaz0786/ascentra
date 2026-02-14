@@ -35,15 +35,15 @@ const Footer = () => {
           </div>
 
           {/* SERVICES */}
-          <div className="col-lg-2 col-md-6">
+          {/* <div className="col-lg-2 col-md-6">
             <h6 className="footer-title">Services</h6>
             <ul className="footer-links">
-              <li><Link to="/market-development">Market Development</Link></li>
-              <li><Link to="/market-entry">Market Entry</Link></li>
-              <li><Link to="/market-presence">Market Presence</Link></li>
-              <li><Link to="/market-expansion">Market Expansion</Link></li>
+              <li><Link to="/market-development">Research, Academic & Innovation Partnerships</Link></li>
+              <li><Link to="/market-entry">In-Country Representation & Market Growth</Link></li>
+              <li><Link to="/market-presence">Events, Outreach & Engagement</Link></li>
+              <li><Link to="/market-expansion">Operational & Compliance Support</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* MEDIA */}
           <div className="col-lg-2 col-md-6">
@@ -57,13 +57,16 @@ const Footer = () => {
           </div>
 
           {/* CONTACT */}
-          <div className="col-lg-2 col-md-6">
+          <div className="col-lg-4 col-md-6">
             <h6 className="footer-title">Get in Touch</h6>
             <p className="footer-text mb-2">
-              contact@aceascentra.com
+              contact@ace.com
             </p>
             <p className="footer-text">
-              New Delhi, India
+              A-143, Upper Ground Floor, Neeti Bagh, New Delhi-110049, India<br />
+              T: +91-11-40522433/40536792<br />
+              E: xxxx@ace.com<br />
+              Mobile: +91-9650050798
             </p>
           </div>
         </div>

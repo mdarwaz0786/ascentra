@@ -32,7 +32,7 @@ const MarketExpansionServicePage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/MarketExpansion.png" />
+      <Hero src="/banner/sb4.png" />
       <div className="container py-5">
         <ServiceHeader
           title="Operational & Compliance Support"

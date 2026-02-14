@@ -32,7 +32,7 @@ const MarketPresenceServicePage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/NewMarketPresence.png" />
+      <Hero src="/banner/sb3.png" />
       <div className="container py-5">
         <ServiceHeader
           title="Events, Outreach & Engagement"
