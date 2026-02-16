@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 22px;
-  height: 350px;
+  height: 400px;
   perspective: 1000px;
   cursor: pointer;
 }
@@ -106,8 +106,8 @@
 
 .custom-list li {
   display: flex;
-  align-items: center;
-  margin-bottom: 6px;
+  /* align-items: center; */
+  margin-bottom: 16px;
   gap: 8px;
 }
 
@@ -119,7 +119,7 @@
 
 @media (max-width: 768px) {
   .service-card {
-    height: 500px;
+    height: 600px;
   }
 
   .service-icon {
