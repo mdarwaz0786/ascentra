@@ -6,7 +6,7 @@ const TestimonialCard = ({
   index,
 }) => {
   const isReverse = index % 2 !== 0;
-  const bgColor = index % 2 !== 0 ? "#f5f5f5" : "#fff";
+  const bgColor = index % 2 !== 0 ? "#f5f5f5" : "#ffffff";
   const imageBgColor = index % 2 !== 0 ? "#ffffff" : "#f5f5f5";
 
   return (
