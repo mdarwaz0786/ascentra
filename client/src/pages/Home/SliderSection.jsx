@@ -1,22 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SliderSection = () => {
-  const [active, setActive] = useState(0);
+  const [active] = useState(0);
 
   const slides = [
-    { id: 1, image: "/banner/Banner1.png", link: "/" },
-    { id: 2, image: "/banner/Banner2.png", link: "/" },
+    // { id: 1, image: "/banner/Banner1.png", link: "/" },
+    { id: 1, image: "/banner/Banner2.png", link: "/" },
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, 10000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setActive((prev) => (prev + 1) % slides.length);
+  //   }, 10000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="position-relative overflow-hidden">
@@ -41,7 +40,7 @@ const SliderSection = () => {
       </div>
 
       {/* Dots */}
-      <div className="position-absolute bottom-0 start-50 translate-middle-x mb-3 d-flex gap-2">
+      {/* <div className="position-absolute bottom-0 start-50 translate-middle-x mb-3 d-flex gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -51,7 +50,7 @@ const SliderSection = () => {
               ${i === active ? "bg-primary" : "bg-white opacity-75"}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

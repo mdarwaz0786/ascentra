@@ -18,7 +18,7 @@ const OurAdvantageSection = () => {
             <h4 className="fw-semibold mb-4">OUR ADVANTAGE</h4>
 
             <p className="fs-5 mb-4">
-              our advantage - integrated the message -Founded on enduring values of integrity, discipline, and excellence, ACE ASCENTRA supports universities, education providers, and corporate organisations in entering, establishing, and scaling successfully across India, South Asia, and the UAE. We combine deep regional insight with global perspective to help institutions navigate complex markets with clarity and confidence.
+              Founded on enduring values of integrity, discipline, and excellence, ACE ASCENTRA supports universities, education providers, and corporate organisations in entering, establishing, and scaling successfully across India, South Asia, and the UAE. We combine deep regional insight with global perspective to help institutions navigate complex markets with clarity and confidence.
             </p>
 
             <p className="fs-5 mb-4">
