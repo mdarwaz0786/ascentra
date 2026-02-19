@@ -14,7 +14,7 @@ const TestimonialPage = () => {
     {
       id: 2,
       description: "Dual-qualified as an Advocate in India and Solicitor in England & Wales, Sonal brings over 18 years of experience in complex litigation and international arbitration. He has handled more than 200 matters before the Supreme Court and tribunals and has led multiple cross-border disputes. Recognised by Legal 500, Benchmark Litigation, and Forbes India, he also led the international expansion of AKS Partners with the establishment of its Dubai office in 2023.",
-      name: "Sonal Kumar Singh ",
+      name: "Sonal Kumar Singh",
       designation: "Director & Legal Strategist",
       image: "/testimonial/Sonal.png",
     },
@@ -22,6 +22,7 @@ const TestimonialPage = () => {
       id: 3,
       description: "Guneet is a leading brand strategy and marketing initiatives with a strong focus on student outreach and engagement. She drives brand positioning, campaign planning, and partnership development to build meaningful connections with young audiences. With a sharp eye for consistency and impact, she ensures all initiatives align with the company’s identity and long-term goals. Her approach blends strategic thinking with executional excellence, contributing to sustained brand growth and visibility.",
       name: "Guneet Kaur",
+      designation: "Founding Partner",
       image: "/testimonial/Guneet.png",
     },
   ];
@@ -30,7 +31,8 @@ const TestimonialPage = () => {
     {
       id: 4,
       description: "Anil Agarwal is a global leader with 35+ years of experience in international operations, P&L management, and market expansion. He held senior leadership roles at world's some of the top companies, driving growth across North America, Europe, India, and emerging markets. He currently serves as Director of Corporate Partnerships and South Asian Affairs at University of Arizona, leading India and global micro-campus initiatives. Anil is also an Adjunct Professor at Eller College of Management. His expertise spans global market entry, corporate partnerships, outsourcing, and supply chain optimisation.",
-      name: "Anil Agarwal ",
+      name: "Anil Agarwal",
+      designation: "Consultant",
       image: "/testimonial/Anil.png",
     },
   ];
