@@ -10,9 +10,9 @@ const AboutusPage = () => {
     <>
       <Navbar />
       <Hero src="/banner/About.png" />
-      <AboutusSection />
-      <GrowthFrameworkSection />
       <OurAdvantageSection />
+      <GrowthFrameworkSection />
+      <AboutusSection />
       <Footer />
     </>
   );

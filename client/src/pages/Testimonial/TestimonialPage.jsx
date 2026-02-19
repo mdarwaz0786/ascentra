@@ -8,6 +8,7 @@ const TestimonialPage = () => {
       id: 1,
       description: "A senior international higher education professional with over 30 years of experience, including two decades in global education. Formerly with the British Council, he has led India operations for Manchester Metropolitan University, Cardiff University, and Durham University. Somnath advises international institutions on student recruitment, academic partnerships, research collaboration, and industry engagement. He is a co-facilitator of the International Officers Training Programme delivered by the British Council and State Governments. His work has enabled sustainable India–UK partnerships through mobility programmes, global grants, alumni engagement, and industry-academia initiatives.",
       name: "Somnath Nandy",
+      designation: "Founding Partner",
       image: "/testimonial/Somnath.png",
     },
     {
@@ -41,7 +42,7 @@ const TestimonialPage = () => {
         <div className="">
           {/* ================= SECTION ONE ================= */}
           <div className="text-center mb-5">
-            <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR CORE STRENGTH</h2>
+            <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR TEAM STRENGTH</h2>
           </div>
 
           <div className="row">

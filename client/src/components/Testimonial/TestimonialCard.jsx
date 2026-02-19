@@ -7,7 +7,7 @@ const TestimonialCard = ({
 }) => {
   const isReverse = index % 2 !== 0;
   const bgColor = index % 2 !== 0 ? "#f5f5f5" : "#ffffff";
-  const imageBgColor = index % 2 !== 0 ? "#ffffff" : "#f5f5f5";
+  const imageBgColor = index % 2 !== 0 ? "grey" : "grey";
 
   return (
     <div className="py-5" style={{ backgroundColor: bgColor }}>
@@ -18,14 +18,11 @@ const TestimonialCard = ({
           {/* Image */}
           <div
             className="col-lg-5 text-center"
-            style={{
-              backgroundColor: imageBgColor,
-            }}
+            style={{ backgroundColor: imageBgColor, borderRadius: "10px" }}
           >
             <img
               src={image}
               alt={name}
-              className="rounded-4"
               style={{
                 width: "100%",
                 height: "100%",
