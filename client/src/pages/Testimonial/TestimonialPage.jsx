@@ -44,7 +44,7 @@ const TestimonialPage = () => {
         <div className="">
           {/* ================= SECTION ONE ================= */}
           <div className="text-center mb-5">
-            <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR TEAM STRENGTH</h2>
+            <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR TEAM</h2>
           </div>
 
           <div className="row">

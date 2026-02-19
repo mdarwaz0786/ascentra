@@ -60,7 +60,7 @@ const Navbar = () => {
 
               <ul className="dropdown-menu modern-dropdown">
                 <li><Link className="dropdown-item" to="/about-us">About Us</Link></li>
-                <li><Link className="dropdown-item" to="/our-core-strength">Our Team Strength</Link></li>
+                <li><Link className="dropdown-item" to="/our-core-strength">Our Team</Link></li>
               </ul>
             </li>
 
