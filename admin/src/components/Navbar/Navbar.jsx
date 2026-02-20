@@ -4,8 +4,10 @@ import styles from "./Navbar.module.css";
 import avatar from "../../assets/avatar.png";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth.context";
 
 const Navbar = ({ handleToggleSidebar }) => {
+  const { logOutUser } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -47,9 +49,7 @@ const Navbar = ({ handleToggleSidebar }) => {
           </div>
           {dropdownOpen && (
             <ul className={styles.dropdownMenu}>
-              <Link to="#" className="text-decoration-none"><li className={styles.dropdownItem} onClick={() => setDropdownOpen(false)}>My Profile</li></Link>
-              <Link to="#" className="text-decoration-none"><li className={styles.dropdownItem} onClick={() => setDropdownOpen(false)}>Settings</li></Link>
-              <Link to="#" className="text-decoration-none"><li className={styles.dropdownItem} onClick={() => setDropdownOpen(false)}>Logout</li></Link>
+              <Link to="#" className="text-decoration-none"><li className={styles.dropdownItem} onClick={() => { setDropdownOpen(false); logOutUser() }}>Logout</li></Link>
             </ul>
           )}
         </div>

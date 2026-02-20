@@ -9,7 +9,6 @@ const mediaSchema = new mongoose.Schema({
   slug: {
     type: String,
     trim: true,
-    default: null,
   },
   image: {
     type: String,
@@ -32,7 +31,7 @@ const mediaSchema = new mongoose.Schema({
   time: {
     type: String,
     trim: true,
-    default: null,
+    required: [true, "Time is required"],
   },
   shortDescription: {
     type: String,

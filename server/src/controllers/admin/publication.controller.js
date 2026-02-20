@@ -10,7 +10,7 @@ import { buildPagination } from "../../utils/pagination.js";
 
 // Create publication
 export const createPublication = asyncHandler(async (req, res) => {
-  const { title, date, time, shortDescription, fullDescription, status } = req.body;
+  const { title, date, time, tags, shortDescription, fullDescription, status } = req.body;
 
   if (!title || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
@@ -32,6 +32,7 @@ export const createPublication = asyncHandler(async (req, res) => {
       title,
       date,
       time,
+      tags,
       shortDescription,
       fullDescription,
       status,

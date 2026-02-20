@@ -26,6 +26,7 @@ const blogSchema = new mongoose.Schema({
   time: {
     type: String,
     trim: true,
+    required: [true, "Time is required"],
   },
   shortDescription: {
     type: String,

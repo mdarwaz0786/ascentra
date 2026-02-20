@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import apis from "../apis/apis";
 
 export const AuthContext = createContext();
 
@@ -26,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const loggedInUser = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("/api/v1/auth/loggedin-user", {
+      const response = await axios.get(apis.auth.loggedIn, {
         headers: {
           Authorization: validToken,
         },

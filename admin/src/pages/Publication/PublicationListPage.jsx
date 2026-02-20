@@ -10,8 +10,9 @@ import { toast } from 'react-toastify';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import apis, { API_BASE_URL } from '../../apis/apis';
+import { formatDate } from '../../helpers/formatDate';
 
-const CategoryListPage = () => {
+const PublicationListPage = () => {
   const { validToken } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -19,8 +20,8 @@ const CategoryListPage = () => {
   const limit = parseInt(searchParams.get("limit")) || 10;
   const search = searchParams.get("search") || "";
 
-  const fetchDataUrl = apis.category.getAll;
-  const singleDeleteUrl = apis.category.deleteSingle;
+  const fetchDataUrl = apis.publication.getAll;
+  const singleDeleteUrl = apis.publication.deleteSingle;
 
   const { deleteData, deleteResponse, deleteError } = useDelete();
 
@@ -77,14 +78,14 @@ const CategoryListPage = () => {
     };
   }, [deleteError]);
 
-  const categories = data?.data || [];
-  const total = data?.total || 0;
+  const publication = data?.data || [];
+  const total = data?.pagination?.total || 0;
 
   return (
     <div className="container mt-1">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h5>Category<span className="badge bg-secondary ms-2">{total}</span></h5>
-        <Link to="/category/add"><button className="btn btn-primary">Add New</button></Link>
+        <h5>Publication<span className="badge bg-secondary ms-2">{total}</span></h5>
+        <Link to="/publication/add"><button className="btn btn-primary">Add New</button></Link>
         <SearchBar value={params.search} onChange={handleSearch} />
       </div>
 
@@ -93,13 +94,14 @@ const CategoryListPage = () => {
           <tr>
             <th>#</th>
             <th>Image</th>
-            <th>Name</th>
+            <th>Title</th>
+            <th>Date</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {categories?.length > 0 ? (
-            categories?.map((item, index) => (
+          {publication?.length > 0 ? (
+            publication?.map((item, index) => (
               <tr key={item?._id}>
                 <td>{index + 1 + (params.page - 1) * params.limit}</td>
                 <td>
@@ -113,14 +115,15 @@ const CategoryListPage = () => {
                     "-"
                   )}
                 </td>
-                <td>{item?.name}</td>
+                <td>{item?.title}</td>
+                <td>{formatDate(item?.date)}</td>
                 <td>
                   <div className="d-flex flex-wrap gap-2">
-                    <Link to={`/category/update/${item?._id}`}>
-                      <button className="btn btn-primary btn-sm">Edit</button>
+                    <Link to={`/publication/update/${item?._id}`}>
+                      <button className="btn btn-primary">Edit</button>
                     </Link>
                     <button
-                      className="btn btn-danger btn-sm"
+                      className="btn btn-danger"
                       onClick={() => handleDelete(item?._id)}
                     >
                       Delete
@@ -156,4 +159,4 @@ const CategoryListPage = () => {
   );
 };
 
-export default CategoryListPage;
+export default PublicationListPage;

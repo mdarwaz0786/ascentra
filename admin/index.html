@@ -4,12 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>admin</title>
+  <title>Admin Ace Ascentra</title>
+
+  <!-- CKEDITOR -->
+  <style>
+    .cke_notifications_area {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <!-- CKEDITOR -->
+  <script src="https://cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace('editor');
+  </script>
 </body>
 
 </html>

@@ -2,20 +2,13 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import {
   MdDashboard,
-  MdShoppingCart,
-  MdPeople,
-  MdAttachMoney,
-  MdLocalOffer,
-  MdRateReview,
-  MdSettings,
   MdLogout,
   MdChevronRight,
   MdClose,
-  MdStorefront,
-  MdCategory,
-  MdLayers,
-  MdViewModule,
-  MdPalette,
+  MdArticle,
+  MdCampaign,
+  MdPermMedia,
+  MdMenuBook,
 } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import styles from "./Sidebar.module.css";
@@ -27,67 +20,25 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
   const sidebarRef = useRef(null);
 
   const dropdownData = [
-    {
-      title: "Product",
-      icon: <MdStorefront />,
-      items: [
-        { label: "Product List", link: "/product/list" },
-        { label: "Add Product", link: "/product/add" },
-      ],
-    },
-    {
-      title: "Category",
-      icon: <MdCategory />,
-      items: [
-        { label: "Category List", link: "/category/list" },
-        { label: "Add Category", link: "/category/add" },
-      ],
-    },
-    {
-      title: "Sub Category",
-      icon: <MdLayers />,
-      items: [
-        { label: "Sub Category List", link: "/sub-category/list" },
-        { label: "Add Sub Category", link: "/sub-category/add" },
-      ],
-    },
-    {
-      title: "Sub Sub Category",
-      icon: <MdViewModule />,
-      items: [
-        { label: "Sub Sub Category List", link: "/sub-sub-category/list" },
-        { label: "Add Sub Sub Category", link: "/sub-sub-category/add" },
-      ],
-    },
-    {
-      title: "Color",
-      icon: <MdPalette />,
-      items: [
-        { label: "Color List", link: "/color/list" },
-        { label: "Add Color", link: "/color/add" },
-      ],
-    },
-    {
-      title: "User",
-      icon: <MdPeople />,
-      items: [
-        { label: "Customer", link: "/user/customer" },
-        { label: "Admin", link: "/user/admin" },
-      ],
-    },
+    // {
+    //   title: "Category",
+    //   icon: <MdStorefront />,
+    //   items: [
+    //     { label: "Category List", link: "/category/list" },
+    //     { label: "Add Category", link: "/category/add" },
+    //   ],
+    // },
   ];
 
   const staticLinks = [
     { label: "Dashboard", icon: <MdDashboard />, link: "/" },
-    { label: "Orders", icon: <MdShoppingCart />, link: "/orders" },
-    { label: "Coupons", icon: <MdLocalOffer />, link: "/coupons" },
-    { label: "Transactions", icon: <MdAttachMoney />, link: "/transactions" },
-    { label: "Reviews", icon: <MdRateReview />, link: "/reviews" },
-    { label: "Settings", icon: <MdSettings />, link: "/settings" },
-    { label: "Logout", icon: <MdLogout />, link: "/logout" },
+    { label: "Blog", icon: <MdArticle />, link: "/blog/list" },
+    { label: "News", icon: <MdCampaign />, link: "/news/list" },
+    { label: "Media", icon: <MdPermMedia />, link: "/media/list" },
+    { label: "Publication", icon: <MdMenuBook />, link: "/publication/list" },
   ];
 
-  const dropdownRefs = useMemo(() => dropdownData.map(() => ({ current: null })), []);
+  const dropdownRefs = useMemo(() => dropdownData?.map(() => ({ current: null })), []);
 
   const handleDropdownClick = (e, index) => {
     e.preventDefault();
@@ -140,20 +91,20 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
       <div className={styles.sidebarScrollArea}>
         <nav className={styles.sidebarNav}>
           <ul className={styles.navList}>
-            {staticLinks.slice(0, 1).map((link) => (
-              <li className={styles.navItem} key={link.label}>
+            {staticLinks?.slice(0, 1).map((link) => (
+              <li className={styles.navItem} key={link?.label}>
                 <Link
                   to={link.link}
                   className={`${styles.navLink} ${activeLink === link.label ? styles.active : ""}`}
-                  onClick={() => handleLinkClick(link.label)}
+                  onClick={() => handleLinkClick(link?.label)}
                 >
-                  {link.icon}
-                  <span className={styles.navLabel}>{link.label}</span>
+                  {link?.icon}
+                  <span className={styles.navLabel}>{link?.label}</span>
                 </Link>
               </li>
             ))}
 
-            {dropdownData.map((dropdown, index) => (
+            {dropdownData?.map((dropdown, index) => (
               <li
                 key={dropdown.title}
                 className={`${styles.navItem} ${styles.dropdownContainer} ${openDropdown === index ? styles.open : ""}`}
@@ -164,7 +115,7 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
                   onClick={(e) => handleDropdownClick(e, index)}
                 >
                   {dropdown.icon}
-                  <span className={styles.navLabel}>{dropdown.title}</span>
+                  <span className={styles.navLabel}>{dropdown?.title}</span>
                   <MdChevronRight className={styles.dropdownIcon} />
                 </Link>
 
@@ -172,14 +123,14 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
                   className={styles.dropdownMenu}
                   ref={(el) => (dropdownRefs[index].current = el)}
                 >
-                  {dropdown.items.map((item) => (
-                    <li className={styles.navItem} key={item.label}>
+                  {dropdown?.items?.map((item) => (
+                    <li className={styles.navItem} key={item?.label}>
                       <Link
                         to={item.link}
                         className={`${styles.navLink} ${styles.dropdownLink} ${activeLink === item.label ? styles.active : ""}`}
-                        onClick={() => handleLinkClick(item.label)}
+                        onClick={() => handleLinkClick(item?.label)}
                       >
-                        {item.label}
+                        {item?.label}
                       </Link>
                     </li>
                   ))}
@@ -187,15 +138,15 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
               </li>
             ))}
 
-            {staticLinks.slice(1).map((link) => (
+            {staticLinks?.slice(1)?.map((link) => (
               <li className={styles.navItem} key={link.label}>
                 <Link
                   to={link.link}
                   className={`${styles.navLink} ${activeLink === link.label ? styles.active : ""}`}
-                  onClick={() => handleLinkClick(link.label)}
+                  onClick={() => handleLinkClick(link?.label)}
                 >
-                  {link.icon}
-                  <span className={styles.navLabel}>{link.label}</span>
+                  {link?.icon}
+                  <span className={styles.navLabel}>{link?.label}</span>
                 </Link>
               </li>
             ))}

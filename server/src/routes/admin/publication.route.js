@@ -2,7 +2,7 @@ import express from "express";
 import upload from "../../middlewares/multer.middleware.js"
 import validateFileSize from "../../middlewares/validateFileSize.middleware.js";
 import protect from "../../middlewares/admin/auth.middleware.js";
-import { createPublication, deletePublication, getPublications, updatePublication } from "../../controllers/admin/publication.controller.js";
+import { createPublication, deletePublication, getPublicationById, getPublications, updatePublication } from "../../controllers/admin/publication.controller.js";
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.post(
 );
 
 router.get("/", getPublications);
-router.get("/:id", getPublications);
+router.get("/:id", getPublicationById);
 
 router.patch(
   "/:id",

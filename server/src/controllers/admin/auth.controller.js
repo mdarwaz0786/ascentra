@@ -85,3 +85,24 @@ export const login = asyncHandler(async (req, res) => {
     },
   });
 });
+
+// Loggedin user
+export const getLoggedInUser = asyncHandler(async (req, res) => {
+  const userId = req.user?._id;
+
+  if (!userId) {
+    throw new ApiError(401, "Unauthorized");
+  }
+
+  const user = await UserModel.findById(userId).select("-password");
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  return res.status(200).json({
+    success: true,
+    message: "User fetched successfully",
+    data: user,
+  });
+});
+
