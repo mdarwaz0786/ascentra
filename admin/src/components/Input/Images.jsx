@@ -1,9 +1,21 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-const Images = ({ onChange, placeholder = "image" }) => {
+const Images = ({ onChange, onRemovedIndexesChange, placeholder = "image", required = false, label, error, width, existingImages = [] }) => {
   const [previews, setPreviews] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const dropRef = useRef(null);
+
+  useEffect(() => {
+    if (existingImages?.length > 0) {
+      const existingPreviews = existingImages.map((img, idx) => ({
+        file: img,
+        url: img,
+        isExisting: true,
+        originalIndex: idx,
+      }));
+      setPreviews(existingPreviews);
+    }
+  }, [existingImages]);
 
   const handleFiles = (files) => {
     const validFiles = Array.from(files);
@@ -35,14 +47,22 @@ const Images = ({ onChange, placeholder = "image" }) => {
   const handleDragLeave = () => setIsDragging(false);
 
   const removeImage = (index) => {
+    const removedImage = previews[index];
+
+    if (removedImage.isExisting && onRemovedIndexesChange) {
+      onRemovedIndexesChange((prev) => [...prev, removedImage.originalIndex]);
+    };
+
     const updated = previews.filter((_, i) => i !== index);
     setPreviews(updated);
     onChange(updated.map((p) => p.file));
   };
 
   return (
-    <div className="mb-4">
-      <label className="form-label fw-semibold">Upload Images</label>
+    <div className={`${width} mb-4`}>
+      <label className="form-label">
+        {label} {required && <span className="text-danger">*</span>}
+      </label>
 
       <div
         ref={dropRef}
@@ -69,6 +89,8 @@ const Images = ({ onChange, placeholder = "image" }) => {
           onChange={handleFileInputChange}
         />
       </div>
+
+      {error && <div className="invalid-feedback d-block">{error}</div>}
 
       {previews.length > 0 && (
         <div className="preview-container d-flex flex-wrap gap-2 mt-3">
@@ -100,4 +122,4 @@ const Images = ({ onChange, placeholder = "image" }) => {
   );
 };
 
-export default Images;
+export default React.memo(Images);

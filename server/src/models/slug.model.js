@@ -10,16 +10,13 @@ const slugSchema = new mongoose.Schema({
   collectionName: {
     type: String,
     required: true,
-    index: true,
   },
   documentId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    index: true,
   },
   pageName: {
     type: String,
-    index: true,
   },
 }, { timestamps: true });
 

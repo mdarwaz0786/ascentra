@@ -3,9 +3,8 @@ import mongoose from "mongoose";
 const categorySchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Category name is required"],
     trim: true,
-    unique: true,
+    required: [true, "Category name is required"],
     maxlength: [100, "Category name must not exceed 100 characters"],
   },
   slug: {
@@ -35,16 +34,7 @@ const categorySchema = new mongoose.Schema({
     ref: "User",
     default: null,
   },
-}, { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } });
-
-categorySchema.index({ name: 1 });
-
-categorySchema.virtual("subcategories", {
-  ref: "SubCategory",
-  localField: "_id",
-  foreignField: "category",
-  justOne: false,
-});
+}, { timestamps: true });
 
 const CategoryModel = mongoose.model("Category", categorySchema);
 

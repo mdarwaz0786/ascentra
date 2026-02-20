@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-const Image = ({ label, placeholder = "image", name, value, onChange, required = false, error, width }) => {
+const Image = ({ label, padding = "16px", placeholder = "image", name, value, onChange, required = false, error, width }) => {
   const [preview, setPreview] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const dropRef = useRef(null);
@@ -53,11 +53,12 @@ const Image = ({ label, placeholder = "image", name, value, onChange, required =
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        className={`rounded p-3 text-center ${isDragging ? "bg-light border-primary" : ""}`}
+        className={`rounded text-center ${isDragging ? "bg-light border-primary" : ""}`}
         style={{
           cursor: "pointer",
           border: `1px solid ${isDragging ? "#0d6efd" : "#ced4da"}`,
           transition: "border-color 0.2s ease",
+          padding: `${padding}`
         }}
         onClick={() => dropRef.current.querySelector("input").click()}
       >
@@ -101,4 +102,4 @@ const Image = ({ label, placeholder = "image", name, value, onChange, required =
   );
 };
 
-export default Image;
+export default React.memo(Image);
