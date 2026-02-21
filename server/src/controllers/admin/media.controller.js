@@ -50,7 +50,7 @@ export const createMedia = asyncHandler(async (req, res) => {
 
 // Get all media
 export const getMedia = asyncHandler(async (req, res) => {
-  let { search, status, sort = "desc", page, limit } = req.query;
+  let { search, status, sort = "desc", page, limit, slug } = req.query;
 
   page = parseInt(page, 10);
   limit = parseInt(limit, 10);
@@ -68,6 +68,10 @@ export const getMedia = asyncHandler(async (req, res) => {
 
   if (status !== undefined) {
     filters.status = status === "true";
+  }
+
+  if (slug) {
+    filters.slug = slug;
   }
 
   let sortOption = {};

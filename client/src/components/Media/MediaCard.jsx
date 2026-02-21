@@ -1,7 +1,9 @@
+import { BsCalendar3 } from "react-icons/bs";
+
 const MediaCard = ({
   image,
   dateTime,
-  sourceLogo,
+  source,
   title,
   description,
   onReadMore,
@@ -21,20 +23,15 @@ const MediaCard = ({
       <div className="card-body">
 
         {/* Date */}
-        <div className="d-flex align-items-center text-muted small mb-4">
-          <i className="bi bi-calendar3 me-2"></i>
+        <div className="d-flex align-items-center text-muted small mb-3">
+          <BsCalendar3 className="me-2" />
           {dateTime}
         </div>
 
-        {/* Source Logo */}
-        {sourceLogo && (
-          <img
-            src={sourceLogo}
-            alt="source"
-            style={{ height: "28px" }}
-            className="mb-4"
-          />
-        )}
+        {/* Source */}
+        <h4 className="fw-medium mb-3">
+          {source}
+        </h4>
 
         {/* Title */}
         <h5 className="fw-bold mb-2">

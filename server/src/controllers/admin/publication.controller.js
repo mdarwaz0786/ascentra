@@ -59,7 +59,7 @@ export const createPublication = asyncHandler(async (req, res) => {
 
 // Get all publication
 export const getPublications = asyncHandler(async (req, res) => {
-  let { search, status, sort = "desc", page, limit } = req.query;
+  let { search, status, sort = "desc", page, slug, limit } = req.query;
 
   page = parseInt(page, 10);
   limit = parseInt(limit, 10);
@@ -76,6 +76,10 @@ export const getPublications = asyncHandler(async (req, res) => {
 
   if (status !== undefined) {
     filters.status = status === "true";
+  }
+
+  if (slug) {
+    filters.slug = slug;
   }
 
   let sortOption = {};

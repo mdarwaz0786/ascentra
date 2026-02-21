@@ -1,8 +1,9 @@
-import { BsShare } from "react-icons/bs";
+import { BsShare, BsCalendar3 } from "react-icons/bs";
 
 const PublicationCard = ({
   image,
   title,
+  dateTime,
   description,
   onReadMore,
   onShare,
@@ -21,12 +22,21 @@ const PublicationCard = ({
       {/* Body */}
       <div className="card-body d-flex flex-column">
 
+        {/* Date */}
+        <div className="d-flex align-items-center text-muted small mb-3">
+          <BsCalendar3 className="me-2" />
+          {dateTime}
+        </div>
+
         <h5 className="fw-bold">
           {title}
         </h5>
 
-        <p className="text-muted small flex-grow-1">
-          {description}
+        {/* Description */}
+        <p className="text-muted small">
+          {description.length > 120
+            ? description.substring(0, 120) + "..."
+            : description}
         </p>
 
         <p>Tags: {tags}</p>
@@ -37,8 +47,9 @@ const PublicationCard = ({
         <div className="d-flex justify-content-between align-items-center">
 
           <button
-            className="btn px-4 rounded-pill"
+            className="btn rounded-pill px-4"
             onClick={onReadMore}
+            style={{ background: "#333", color: "#fff" }}
           >
             Read More
           </button>
@@ -49,7 +60,6 @@ const PublicationCard = ({
           >
             <BsShare />
           </button>
-
         </div>
       </div>
     </div>

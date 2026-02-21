@@ -1,13 +1,13 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
-import apis from "../../../../admin/src/apis/apis";
 import BlogCard from "../../components/Blog/BlogCard";
 import LoadMoreButton from "../../components/Button/LoadMoreButton";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Navbar from "../../components/Navbar/Navbar";
-import useFetchData from "../../../../admin/src/hooks/useFetchData";
 import { formatDate } from "../../helpers/formatDate";
 import { shareContent } from "../../helpers/shareContent";
+import useFetchData from "../../hooks/useFetchData";
+import apis from "../../apis/apis";
 
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,8 +17,7 @@ const BlogPage = () => {
   const limit = parseInt(searchParams.get("limit")) || 6;
   const type = searchParams.get("type") || "blog";
 
-  const fetchUrl =
-    type === "news" ? apis.news.getAll : apis.blog.getAll;
+  const fetchUrl = type === "news" ? apis.news.getAll : apis.blog.getAll;
 
   const { data: blogData, isLoading } = useFetchData(
     fetchUrl,
@@ -91,12 +90,12 @@ const BlogPage = () => {
                   dateTime={`${formatDate(item?.date)} | ${item?.time}`}
                   title={item?.title}
                   description={item?.shortDescription}
-                  onReadMore={() => navigate(`/blog/${item?.slug}`)}
+                  onReadMore={() => navigate(`/${type}/${item?.slug}`)}
                   onShare={() =>
                     shareContent({
                       title: item?.title,
                       text: item?.shortDescription,
-                      url: `${window.location.origin}/blog/${item?.slug}`,
+                      url: `${window.location.origin}/${type}/${item?.slug}`,
                     })
                   }
                 />

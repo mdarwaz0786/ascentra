@@ -58,7 +58,7 @@ export const createNews = asyncHandler(async (req, res) => {
 
 // Get all news
 export const getNews = asyncHandler(async (req, res) => {
-  let { search, status, sort = "desc", page, limit } = req.query;
+  let { search, status, sort = "desc", page, limit, slug } = req.query;
 
   page = parseInt(page, 10);
   limit = parseInt(limit, 10);
@@ -75,6 +75,10 @@ export const getNews = asyncHandler(async (req, res) => {
 
   if (status !== undefined) {
     filters.status = status === "true";
+  }
+
+  if (slug) {
+    filters.slug = slug;
   }
 
   let sortOption = {};

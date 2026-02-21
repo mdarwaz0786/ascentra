@@ -13,6 +13,10 @@ import ContactusPage from "./pages/Contactus/ContactusPage";
 import CareerPage from "./pages/Career/CareerPage";
 import ScrollToTop from "./utils/ScrollToTop";
 import TestimonialPage from "./pages/Testimonial/TestimonialPage";
+import PublicationDetailPage from "./pages/Publication/PublicationDetailPage";
+import MediaDetailPage from "./pages/Media/MediaDetailPage";
+import BlogDetailPage from "./pages/Blog/BlogDetailPage";
+import NewsDetailPage from "./pages/Blog/NewsDetailPage";
 
 const App = () => {
   return (
@@ -27,9 +31,13 @@ const App = () => {
         <Route path="/market-presence" element={<MarketPresenceServicePage />} />
         <Route path="/market-expansion" element={<MarketExpansionServicePage />} />
         <Route path="/media" element={<MediaPage />} />
+        <Route path="/media/:id" element={<MediaDetailPage />} />
         <Route path="/event" element={<EventPage />} />
         <Route path="/publication" element={<PublicationPage />} />
+        <Route path="/publication/:slug" element={<PublicationDetailPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogDetailPage />} />
+        <Route path="/news/:slug" element={<NewsDetailPage />} />
         <Route path="/career" element={<CareerPage />} />
         <Route path="/our-core-strength" element={<TestimonialPage />} />
       </Routes>

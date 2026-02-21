@@ -1,4 +1,4 @@
-import { BsShare } from "react-icons/bs";
+import { BsShare, BsCalendar3 } from "react-icons/bs";
 
 const BlogCard = ({
   image,
@@ -23,7 +23,7 @@ const BlogCard = ({
 
         {/* Date */}
         <div className="d-flex align-items-center text-muted small mb-2">
-          <i className="bi bi-calendar3 me-2"></i>
+          <BsCalendar3 className="me-2" />
           {dateTime}
         </div>
 
@@ -34,7 +34,9 @@ const BlogCard = ({
 
         {/* Description */}
         <p className="text-muted small">
-          {description}
+          {description?.length > 120
+            ? description.substring(0, 120) + "..."
+            : description}
         </p>
 
         <hr />
