@@ -2,8 +2,62 @@ import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
+import { useEffect, useState } from "react";
+import useCreate from "../../hooks/useCreate";
+import useFormValidation from "../../hooks/useFormValidation";
+import apis from "../../apis/apis";
+import { toast } from "react-toastify";
 
 const ContactusPage = () => {
+  const { postData, response, postError } = useCreate(apis.contact.create);
+  const { errors, validate } = useFormValidation();
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const isValid = validate(form, {
+      name: { required: true, label: "Name" },
+      mobile: { required: true, label: "Mobile" },
+      message: { required: true, label: "Message" },
+    });
+
+    if (!isValid) return;
+
+    setIsSubmitting(true);
+    await postData(form);
+    setIsSubmitting(false);
+  };
+
+  useEffect(() => {
+    if (response?.success) {
+      toast.success("Message sent successfully!");
+      setForm({
+        name: "",
+        email: "",
+        mobile: "",
+        subject: "",
+        message: "",
+      });
+    } else if (postError) {
+      toast.error(postError);
+    }
+  }, [response, postError]);
+
   return (
     <>
       <Navbar />
@@ -47,7 +101,7 @@ const ContactusPage = () => {
                     </span>
                   </div>
                   <h5 className="fw-semibold">Email Us</h5>
-                  <p className="text-muted mb-0">contact@ace.com</p>
+                  <p className="text-muted mb-0">xxxxx@ace.com</p>
                 </div>
               </div>
 
@@ -82,47 +136,99 @@ const ContactusPage = () => {
               <div className="col-lg-6">
                 <div className="card shadow-lg border-0">
                   <div className="card-body p-4 p-md-5">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <div className="row g-3">
-                        <div className="col-md-6">
+                        <div className="col-12">
                           <input
                             type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
                             className="form-control form-control-lg"
                             placeholder="Your Name"
                           />
+                          {errors.name && (
+                            <small className="text-danger">
+                              {errors.name}
+                            </small>
+                          )}
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-12">
                           <input
                             type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
                             className="form-control form-control-lg"
                             placeholder="Your Email"
                           />
+                          {errors.email && (
+                            <small className="text-danger">
+                              {errors.email}
+                            </small>
+                          )}
                         </div>
 
                         <div className="col-12">
                           <input
                             type="text"
+                            name="mobile"
+                            value={form.mobile}
+                            onChange={handleChange}
+                            className="form-control form-control-lg"
+                            placeholder="Your Mobile"
+                          />
+                          {errors.mobile && (
+                            <small className="text-danger">
+                              {errors.mobile}
+                            </small>
+                          )}
+                        </div>
+
+                        <div className="col-12">
+                          <input
+                            type="text"
+                            name="subject"
+                            value={form.subject}
+                            onChange={handleChange}
                             className="form-control form-control-lg"
                             placeholder="Subject"
                           />
+                          {errors.subject && (
+                            <small className="text-danger">
+                              {errors.subject}
+                            </small>
+                          )}
                         </div>
 
                         <div className="col-12">
                           <textarea
-                            className="form-control form-control-lg"
+                            name="message"
                             rows="4"
+                            value={form.message}
+                            onChange={handleChange}
+                            className="form-control form-control-lg"
                             placeholder="Your Message"
                           ></textarea>
+                          {errors.message && (
+                            <small className="text-danger">
+                              {errors.message}
+                            </small>
+                          )}
                         </div>
 
                         <div className="col-12 text-end">
                           <button
                             type="submit"
+                            disabled={isSubmitting}
                             className="btn btn-lg px-5"
-                            style={{ background: "#00578c", color: "#fff" }}
+                            style={{
+                              background: "#00578c",
+                              color: "#fff",
+                            }}
                           >
-                            Send Message
+                            {isSubmitting ? "Sending..." : "Send Message"}
                           </button>
                         </div>
                       </div>

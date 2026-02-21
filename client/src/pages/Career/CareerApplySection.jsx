@@ -1,35 +1,85 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useCreate from "../../hooks/useCreate";
+import useFormValidation from "../../hooks/useFormValidation";
+import { toast } from "react-toastify";
+import apis from "../../apis/apis";
 
 const CareerApplySection = () => {
+  const { postData, response, postError } = useCreate(apis.resume.create);
+  const { errors, validate } = useFormValidation();
+
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
-    phone: "",
+    mobile: "",
     position: "",
     coverLetter: "",
     resume: null,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
-    if (name === "resume") {
-      setFormData({ ...formData, resume: files[0] });
+    if (name == "resume") {
+      setFormData((prev) => ({
+        ...prev,
+        resume: files[0],
+      }));
     } else {
-      setFormData({ ...formData, [name]: value });
-    };
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert("Application Submitted!");
+
+    const isValid = validate(formData, {
+      name: { required: true, label: "Name" },
+      email: { required: true, label: "Email" },
+      mobile: { required: true, label: "Mobile" },
+      position: { required: true, label: "Position" },
+      resume: { required: true, label: "Resume" },
+    });
+
+    if (!isValid) return;
+
+    const payload = new FormData();
+    payload.append("name", formData.name);
+    payload.append("email", formData.email);
+    payload.append("mobile", formData.mobile);
+    payload.append("position", formData.position);
+    payload.append("coverLetter", formData.coverLetter);
+    payload.append("resume", formData.resume);
+
+    setIsSubmitting(true);
+    await postData(payload, "", true);
+    setIsSubmitting(false);
   };
+
+  useEffect(() => {
+    if (response?.success) {
+      toast.success("Application submitted successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        position: "",
+        coverLetter: "",
+        resume: null,
+      });
+    } else if (postError) {
+      toast.error(postError);
+    }
+  }, [response, postError]);
 
   return (
     <section className="py-5" style={{ background: "#f5f5f5" }}>
       <div className="container">
-        {/* Section Header */}
         <div className="text-center mb-5">
           <h2 className="fw-semibold">Apply for a Position</h2>
           <p className="mx-auto">
@@ -38,55 +88,55 @@ const CareerApplySection = () => {
           </p>
         </div>
 
-        {/* Form Card */}
         <div className="row justify-content-center">
           <div className="col-lg-12">
             <div className="card border-0 shadow-sm rounded-4 p-4">
               <form onSubmit={handleSubmit}>
                 <div className="row">
-                  {/* Full Name */}
+
+                  {/* Name */}
                   <div className="col-md-6 mb-3">
-                    <label className="form-label fw-semibold">
-                      Full Name
-                    </label>
+                    <label className="form-label fw-semibold">Name</label>
                     <input
                       type="text"
                       className="form-control"
-                      name="fullName"
-                      value={formData.fullName}
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
-                      required
                     />
+                    {errors.name && (
+                      <small className="text-danger">{errors.name}</small>
+                    )}
                   </div>
 
                   {/* Email */}
                   <div className="col-md-6 mb-3">
-                    <label className="form-label fw-semibold">
-                      Email Address
-                    </label>
+                    <label className="form-label fw-semibold">Email</label>
                     <input
                       type="email"
                       className="form-control"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      required
                     />
+                    {errors.email && (
+                      <small className="text-danger">{errors.email}</small>
+                    )}
                   </div>
 
-                  {/* Phone */}
+                  {/* Mobile */}
                   <div className="col-md-6 mb-3">
-                    <label className="form-label fw-semibold">
-                      Phone Number
-                    </label>
+                    <label className="form-label fw-semibold">Mobile</label>
                     <input
                       type="tel"
                       className="form-control"
-                      name="phone"
-                      value={formData.phone}
+                      name="mobile"
+                      value={formData.mobile}
                       onChange={handleChange}
-                      required
                     />
+                    {errors.mobile && (
+                      <small className="text-danger">{errors.mobile}</small>
+                    )}
                   </div>
 
                   {/* Position */}
@@ -100,11 +150,13 @@ const CareerApplySection = () => {
                       name="position"
                       value={formData.position}
                       onChange={handleChange}
-                      required
                     />
+                    {errors.position && (
+                      <small className="text-danger">{errors.position}</small>
+                    )}
                   </div>
 
-                  {/* Resume Upload */}
+                  {/* Resume */}
                   <div className="col-12 mb-3">
                     <label className="form-label fw-semibold">
                       Upload Resume
@@ -113,10 +165,12 @@ const CareerApplySection = () => {
                       type="file"
                       className="form-control"
                       name="resume"
-                      accept=".pdf,.doc,.docx"
+                      accept=".pdf,.doc,.doc,.docx"
                       onChange={handleChange}
-                      required
                     />
+                    {errors.resume && (
+                      <small className="text-danger">{errors.resume}</small>
+                    )}
                   </div>
 
                   {/* Cover Letter */}
@@ -133,14 +187,17 @@ const CareerApplySection = () => {
                     ></textarea>
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Submit */}
                   <div className="col-12 text-center">
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="btn px-5 py-2 fw-semibold rounded-pill"
                       style={{ background: "#333", color: "#fff" }}
                     >
-                      Submit Application
+                      {isSubmitting
+                        ? "Submitting..."
+                        : "Submit Application"}
                     </button>
                   </div>
                 </div>

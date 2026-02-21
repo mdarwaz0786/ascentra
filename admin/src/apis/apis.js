@@ -37,6 +37,20 @@ const apis = {
     getSingle: `${API_BASE_URL}/api/v1/admin/publications`,
     deleteSingle: `${API_BASE_URL}/api/v1/admin/publications`,
   },
+  contact: {
+    create: `${API_BASE_URL}/api/v1/admin/contact`,
+    update: `${API_BASE_URL}/api/v1/admin/contact`,
+    getAll: `${API_BASE_URL}/api/v1/admin/contact`,
+    getSingle: `${API_BASE_URL}/api/v1/admin/contact`,
+    deleteSingle: `${API_BASE_URL}/api/v1/admin/contact`,
+  },
+  resume: {
+    create: `${API_BASE_URL}/api/v1/admin/resume`,
+    update: `${API_BASE_URL}/api/v1/admin/resume`,
+    getAll: `${API_BASE_URL}/api/v1/admin/resume`,
+    getSingle: `${API_BASE_URL}/api/v1/admin/resume`,
+    deleteSingle: `${API_BASE_URL}/api/v1/admin/resume`,
+  },
 };
 
 export default apis;

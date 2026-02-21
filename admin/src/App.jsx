@@ -20,6 +20,8 @@ import MediaListPage from './pages/Media/MediaListPage';
 import AddPublicationPage from './pages/Publication/AddPublicationPage';
 import UpdatePublicationPage from './pages/Publication/UpdatePublicationPage';
 import PublicationListPage from './pages/Publication/PublicationListPage';
+import ResumeListPage from './pages/Resume/ResumeListPage';
+import ContactListPage from './pages/Contact/ContactListPage';
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -58,6 +60,9 @@ const App = () => {
             <Route path="/publication/add" element={<AddPublicationPage />} />
             <Route path="/publication/update/:id" element={<UpdatePublicationPage />} />
             <Route path="/publication/list" element={<PublicationListPage />} />
+
+            <Route path="/resume/list" element={<ResumeListPage />} />
+            <Route path="/contact/list" element={<ContactListPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </>

@@ -2,7 +2,8 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import {
   MdDashboard,
-  MdLogout,
+  MdDescription,
+  MdContactMail,
   MdChevronRight,
   MdClose,
   MdArticle,
@@ -36,6 +37,8 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
     { label: "News", icon: <MdCampaign />, link: "/news/list" },
     { label: "Media", icon: <MdPermMedia />, link: "/media/list" },
     { label: "Publication", icon: <MdMenuBook />, link: "/publication/list" },
+    { label: "Contact Enquiry", icon: <MdContactMail />, link: "/contact/list" },
+    { label: "Resume", icon: <MdDescription />, link: "/resume/list" },
   ];
 
   const dropdownRefs = useMemo(() => dropdownData?.map(() => ({ current: null })), []);
