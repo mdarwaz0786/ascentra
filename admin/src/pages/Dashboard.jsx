@@ -17,7 +17,7 @@ const Dashboard = () => {
   const stats = [
     { label: "Blog", value: data?.data?.blogs, icon: <FaBoxOpen size={20} />, color: "text-primary", to: "/blog/list" },
     { label: "News", value: data?.data?.news, icon: <FaGlobe size={20} />, color: "text-success", to: "/news/list" },
-    { label: "Media", value: data?.data?.media, icon: <FaThLarge size={20} />, color: "text-warning", to: "/media" },
+    { label: "Media", value: data?.data?.media, icon: <FaThLarge size={20} />, color: "text-warning", to: "/media/list" },
     { label: "Publication", value: data?.data?.publications, icon: <FaTags size={20} />, color: "text-danger", to: "/publication/list" },
     { label: "User", value: data?.data?.users, icon: <FaUsers size={20} />, color: "text-danger", to: "/user/list" },
   ];
