@@ -15,7 +15,7 @@ const TestimonialPage = () => {
       id: 2,
       description: "Dual-qualified as an Advocate in India and Solicitor in England & Wales, Sonal brings over 18 years of experience in complex litigation and international arbitration. He has handled more than 200 matters before the Supreme Court and tribunals and has led multiple cross-border disputes. Recognised by Legal 500, Benchmark Litigation, and Forbes India, he also led the international expansion of AKS Partners with the establishment of its Dubai office in 2023.",
       name: "Sonal Kumar Singh",
-      designation: "Director & Legal Strategist",
+      designation: "Founding Partner",
       image: "/testimonial/Sonal.png",
     },
     {

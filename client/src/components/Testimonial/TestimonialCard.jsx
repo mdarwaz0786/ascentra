@@ -17,7 +17,7 @@ const TestimonialCard = ({
         >
           {/* Image */}
           <div
-            className="col-lg-5 text-center"
+            className="col-lg-3 text-center"
             style={{ backgroundColor: imageBgColor, borderRadius: "10px" }}
           >
             <img
@@ -32,7 +32,7 @@ const TestimonialCard = ({
           </div>
 
           {/* Content */}
-          <div className="col-lg-7">
+          <div className="col-lg-9">
             <h4 className="fw-bold mb-1">{name}</h4>
             <p className="text-muted mb-3">{designation}</p>
             <p className="fs-5 mb-4">
