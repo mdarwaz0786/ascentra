@@ -12,6 +12,8 @@ import { useEffect } from 'react';
 import apis from '../../apis/apis';
 import { formatDate } from '../../helpers/formatDate';
 import { Link } from 'react-router-dom';
+import useToggleStatus from '../../hooks/useToggleStatus';
+import StatusToggle from '../../components/Table/StatusToggle';
 
 const ContactListPage = () => {
   const { validToken } = useAuth();
@@ -23,6 +25,7 @@ const ContactListPage = () => {
 
   const fetchDataUrl = apis.contact.getAll;
   const singleDeleteUrl = apis.contact.deleteSingle;
+  const updateStatusUrl = apis.contact.update;
 
   const { deleteData, deleteResponse, deleteError } = useDelete();
 
@@ -33,6 +36,8 @@ const ContactListPage = () => {
     refetch,
     isLoading,
   } = useFetchData(fetchDataUrl, validToken, { page, limit, search });
+
+  const { toggling, toggleStatus } = useToggleStatus({ token: validToken, refetch });
 
   useEffect(() => {
     setParams({ page, limit, search });
@@ -96,6 +101,7 @@ const ContactListPage = () => {
             <th>Name</th>
             <th>Mobile</th>
             <th>Date</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -107,6 +113,14 @@ const ContactListPage = () => {
                 <td>{item?.name}</td>
                 <td>{item?.mobile}</td>
                 <td>{formatDate(item?.createdAt)}</td>
+                <td>
+                  <StatusToggle
+                    id={item?._id}
+                    status={item?.status}
+                    toggling={toggling}
+                    onToggle={() => toggleStatus(updateStatusUrl, item?._id, item?.status)}
+                  />
+                </td>
                 <td>
                   <div className="d-flex flex-wrap gap-2">
                     <Link to={`/contact/detail/${item?._id}`}>

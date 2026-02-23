@@ -9,8 +9,11 @@ import useDelete from '../../hooks/useDelete';
 import { toast } from 'react-toastify';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import apis, { API_BASE_URL } from '../../apis/apis';
+import apis from '../../apis/apis';
 import { formatDate } from '../../helpers/formatDate';
+import useToggleStatus from '../../hooks/useToggleStatus';
+import TableImage from '../../components/Table/TableImage';
+import StatusToggle from '../../components/Table/StatusToggle';
 
 const NewsListPage = () => {
   const { validToken } = useAuth();
@@ -22,6 +25,7 @@ const NewsListPage = () => {
 
   const fetchDataUrl = apis.news.getAll;
   const singleDeleteUrl = apis.news.deleteSingle;
+  const updateStatusUrl = apis.news.update;
 
   const { deleteData, deleteResponse, deleteError } = useDelete();
 
@@ -32,6 +36,8 @@ const NewsListPage = () => {
     refetch,
     isLoading,
   } = useFetchData(fetchDataUrl, validToken, { page, limit, search });
+
+  const { toggling, toggleStatus } = useToggleStatus({ token: validToken, refetch });
 
   useEffect(() => {
     setParams({ page, limit, search });
@@ -96,6 +102,7 @@ const NewsListPage = () => {
             <th>Image</th>
             <th>Title</th>
             <th>Date</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -105,18 +112,23 @@ const NewsListPage = () => {
               <tr key={item?._id}>
                 <td>{index + 1 + (params.page - 1) * params.limit}</td>
                 <td>
-                  {item?.image ? (
-                    <img
-                      src={`${API_BASE_URL}/${item?.image}`}
-                      alt="image"
-                      style={{ width: "50px", height: "50px", objectFit: "cover", borderRadius: "4px" }}
-                    />
-                  ) : (
-                    "-"
-                  )}
+                  <TableImage
+                    src={item?.image}
+                    alt={item?.name}
+                    width={50}
+                    height={50}
+                  />
                 </td>
                 <td>{item?.title}</td>
                 <td>{formatDate(item?.date)}</td>
+                <td>
+                  <StatusToggle
+                    id={item?._id}
+                    status={item?.status}
+                    toggling={toggling}
+                    onToggle={() => toggleStatus(updateStatusUrl, item?._id, item?.status)}
+                  />
+                </td>
                 <td>
                   <div className="d-flex flex-wrap gap-2">
                     <Link to={`/news/update/${item?._id}`}>
