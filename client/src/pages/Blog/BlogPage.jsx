@@ -15,7 +15,7 @@ const BlogPage = () => {
   const navigate = useNavigate();
 
   const page = parseInt(searchParams.get("page")) || 1;
-  const limit = parseInt(searchParams.get("limit")) || 1;
+  const limit = parseInt(searchParams.get("limit")) || 9;
   const type = searchParams.get("type") || "blog";
 
   const fetchUrl = type === "news" ? apis.news.getAll : apis.blog.getAll;

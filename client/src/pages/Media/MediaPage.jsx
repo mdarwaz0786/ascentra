@@ -13,7 +13,7 @@ const MediaPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = parseInt(searchParams.get("page")) || 1;
-  const limit = parseInt(searchParams.get("limit")) || 6;
+  const limit = parseInt(searchParams.get("limit")) || 9;
 
   const { data, isLoading } = useFetchData({
     url: apis.media.getAll,
