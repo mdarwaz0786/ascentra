@@ -8,26 +8,26 @@ import { formatDate } from "../../helpers/formatDate";
 import { shareContent } from "../../helpers/shareContent";
 import useFetchData from "../../hooks/useFetchData";
 import apis from "../../apis/apis";
+import Loading from "../../components/Loading/Loading";
 
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const page = parseInt(searchParams.get("page")) || 1;
-  const limit = parseInt(searchParams.get("limit")) || 6;
+  const limit = parseInt(searchParams.get("limit")) || 1;
   const type = searchParams.get("type") || "blog";
 
   const fetchUrl = type === "news" ? apis.news.getAll : apis.blog.getAll;
 
-  const { data: blogData, isLoading } = useFetchData(
-    fetchUrl,
-    "",
-    { page, limit }
-  );
+  const { data, isLoading } = useFetchData({
+    url: fetchUrl,
+    params: { page, limit },
+  });
 
-  const blogs = blogData?.data || [];
-  const pagination = blogData?.pagination || {};
-  const hasNextPage = pagination?.hasNextPage;
+  const blogs = data?.data || [];
+  const pagination = data?.pagination || {};
+  const hasMore = pagination?.hasMore;
 
   const updateQueryParams = (updates = {}) => {
     setSearchParams({
@@ -39,7 +39,7 @@ const BlogPage = () => {
   };
 
   const handleLoadMore = () => {
-    if (hasNextPage) {
+    if (hasMore) {
       updateQueryParams({ page: page + 1 });
     }
   };
@@ -80,7 +80,7 @@ const BlogPage = () => {
         </div>
 
         {isLoading && page == 1 ? (
-          <div className="text-center py-5">Loading...</div>
+          <Loading fullScreen text={`Loading ${type === "blog" ? "blogs" : "news"}...`} />
         ) : (
           <div className="row g-4">
             {blogs?.map((item) => (
@@ -105,7 +105,7 @@ const BlogPage = () => {
         )}
       </div>
 
-      {hasNextPage && (
+      {hasMore && (
         <LoadMoreButton
           onClick={handleLoadMore}
           className="px-3"

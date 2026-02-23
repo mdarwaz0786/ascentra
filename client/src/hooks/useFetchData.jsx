@@ -1,53 +1,40 @@
-import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function useFetchData(apiUrl, token = "", initialParams = {}) {
+const useFetchData = ({ url, token, params }) => {
   const [data, setData] = useState(null);
-  const [params, setParams] = useState(initialParams);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [reloadFlag, setReloadFlag] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
-      setError(null);
       try {
-        const config = {
-          headers: {
-            Authorization: token,
-          },
-          params: params,
-        };
-        const response = await axios.get(apiUrl, config);
+        setIsLoading(true);
+
+        const response = await axios.get(url, {
+          headers: token
+            ? { Authorization: token }
+            : {},
+          params,
+        });
+
         if (response?.data?.success) {
           setData(response?.data);
         };
-      } catch (err) {
-        setError(err?.response?.data?.message || "Error while fetching data");
+      } catch (error) {
+        setError(error?.response?.data?.message || "Error while fetching data");
       } finally {
         setIsLoading(false);
       };
     };
 
-    fetchData();
-  }, [apiUrl, token, params, reloadFlag]);
+    if (url) {
+      fetchData();
+    };
+  }, [url, JSON.stringify(params)]);
 
-  const updateParams = useCallback((newParams) => {
-    setParams((prev) => ({
-      ...prev,
-      ...newParams,
-    }));
-  }, []);
-
-  return {
-    data,
-    isLoading,
-    error,
-    params,
-    setParams: updateParams,
-    refetch: () => setReloadFlag((prev) => !prev),
-  };
+  return { data, isLoading, error };
 };
 
 export default useFetchData;

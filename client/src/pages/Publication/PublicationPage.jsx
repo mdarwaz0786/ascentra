@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import PublicationCard from "../../components/Publication/PublicationCard";
 import { shareContent } from "../../helpers/shareContent";
 import { formatDate } from "../../helpers/formatDate";
+import Loading from "../../components/Loading/Loading";
 
 const PublicationPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,15 +17,14 @@ const PublicationPage = () => {
   const page = parseInt(searchParams.get("page")) || 1;
   const limit = parseInt(searchParams.get("limit")) || 6;
 
-  const { data, isLoading } = useFetchData(
-    apis.publication.getAll,
-    "",
-    { page, limit }
-  );
+  const { data, isLoading } = useFetchData({
+    url: apis.publication.getAll,
+    params: { page, limit },
+  });
 
   const publications = data?.data || [];
   const pagination = data?.pagination || {};
-  const hasNextPage = pagination?.hasNextPage;
+  const hasMore = pagination?.hasMore;
 
   const updateQueryParams = (updates = {}) => {
     setSearchParams({
@@ -35,7 +35,7 @@ const PublicationPage = () => {
   };
 
   const handleLoadMore = () => {
-    if (hasNextPage) {
+    if (hasMore) {
       updateQueryParams({ page: page + 1 });
     }
   };
@@ -46,7 +46,7 @@ const PublicationPage = () => {
       <Hero src="/banner/Publications.png" />
       <div className="container my-5">
         {isLoading && page === 1 ? (
-          <div className="text-center py-5">Loading...</div>
+          <Loading fullScreen text="Loading publications..." />
         ) : (
           <div className="row g-4">
             {publications?.map((item) => (
@@ -71,7 +71,7 @@ const PublicationPage = () => {
           </div>
         )}
       </div>
-      {hasNextPage && (
+      {hasMore && (
         <LoadMoreButton
           onClick={handleLoadMore}
           className="px-3"

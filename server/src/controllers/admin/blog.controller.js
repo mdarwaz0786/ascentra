@@ -114,7 +114,7 @@ export const getBlogById = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Blog not found");
   }
 
-  return res.status(200).json({ success: true, data: blog });
+  return res.status(200).json({ success: true, message: "Data fetched successfully", data: blog });
 });
 
 // Update blog

@@ -8,7 +8,7 @@ const uploadFile = async ({
   originalname,
   mimetype,
   folder = "common",
-  maxSizeMB = 5,
+  maxSizeMB = 1,
 }) => {
   try {
     if (!buffer || !originalname || !mimetype) {

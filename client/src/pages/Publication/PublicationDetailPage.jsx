@@ -5,22 +5,23 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import ContentDetail from "../../components/ContentDetail/ContentDetail";
 import Hero from "../../components/Hero/Hero";
+import Loading from "../../components/Loading/Loading";
 
 const PublicationDetailPage = () => {
   const { slug } = useParams();
 
-  const { data, isLoading } = useFetchData(
-    `${apis.publication.getAll}?slug=${slug}`
-  );
+  const { data, isLoading } = useFetchData({
+    url: `${apis.publication.getSingle}/${slug}`,
+  });
 
-  const d = data?.data?.[0];
+  const d = data?.data;
 
   return (
     <>
       <Navbar />
       <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${d?.banner}`} />
       {isLoading ? (
-        <div className="text-center py-5">Loading...</div>
+        <Loading fullScreen text="Loading publication details..." />
       ) : d ? (
         <ContentDetail
           title={d?.title}

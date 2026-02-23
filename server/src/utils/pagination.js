@@ -1,5 +1,5 @@
 export function buildPagination({ page, limit, total }) {
-  const totalPages = Math.ceil(total / limit);
+  const totalPages = Math.ceil(total / limit) || 1;
 
   return {
     currentPage: page,
@@ -8,6 +8,7 @@ export function buildPagination({ page, limit, total }) {
     totalPages: totalPages,
     hasPrevPage: page > 1,
     hasNextPage: page < totalPages,
+    hasMore: page < totalPages,
     pages: getPaginationPages(page, totalPages),
   };
 };

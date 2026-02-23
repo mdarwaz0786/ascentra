@@ -8,7 +8,7 @@ import uploadFile from "../../helpers/uploadFile.js";
 
 // ================= CREATE RESUME =================
 export const createResume = asyncHandler(async (req, res) => {
-  const { name, email, mobile, position, coverLetter, status } = req.body;
+  const { name, email, mobile, position, coverLetter } = req.body;
 
   let resumePath = null;
 
@@ -22,7 +22,7 @@ export const createResume = asyncHandler(async (req, res) => {
         originalname: file.originalname,
         mimetype: file.mimetype,
         folder: "resume",
-        maxSizeMB: 5,
+        maxSizeMB: 1,
       });
     }
 
@@ -33,7 +33,6 @@ export const createResume = asyncHandler(async (req, res) => {
       position,
       coverLetter,
       resume: resumePath,
-      status: status === "true" || status === true,
     });
 
     return res.status(201).json({
