@@ -11,6 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import apis from '../../apis/apis';
 import { formatDate } from '../../helpers/formatDate';
+import { Link } from 'react-router-dom';
 
 const ContactListPage = () => {
   const { validToken } = useAuth();
@@ -108,6 +109,9 @@ const ContactListPage = () => {
                 <td>{formatDate(item?.createdAt)}</td>
                 <td>
                   <div className="d-flex flex-wrap gap-2">
+                    <Link to={`/contact/detail/${item?._id}`}>
+                      <button className="btn btn-primary">View</button>
+                    </Link>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(item?._id)}

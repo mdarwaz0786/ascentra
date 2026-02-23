@@ -22,6 +22,8 @@ import UpdatePublicationPage from './pages/Publication/UpdatePublicationPage';
 import PublicationListPage from './pages/Publication/PublicationListPage';
 import ResumeListPage from './pages/Resume/ResumeListPage';
 import ContactListPage from './pages/Contact/ContactListPage';
+import ContactDetailPage from './pages/Contact/ContactDetailPage';
+import ResumeDetailPage from './pages/Resume/ResumeDetailPage';
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,7 +64,10 @@ const App = () => {
             <Route path="/publication/list" element={<PublicationListPage />} />
 
             <Route path="/resume/list" element={<ResumeListPage />} />
+            <Route path="/resume/detail/:id" element={<ResumeDetailPage />} />
+
             <Route path="/contact/list" element={<ContactListPage />} />
+            <Route path="/contact/detail/:id" element={<ContactDetailPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </>
