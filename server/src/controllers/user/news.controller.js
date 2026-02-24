@@ -34,16 +34,13 @@ export const getNews = asyncHandler(async (req, res) => {
 
   const cumulativeLimit = page * limit;
 
-  const news = await NewsModel.find(filters)
-    .sort(sortOption)
-    .limit(cumulativeLimit)
-    .lean();
-
-  if (!news) {
-    throw new ApiError(404, "News not found");
-  }
-
-  const total = await NewsModel.countDocuments(filters);
+  const [news, total] = await Promise.all([
+    NewsModel.find(filters)
+      .sort(sortOption)
+      .limit(cumulativeLimit)
+      .lean(),
+    NewsModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,

@@ -31,7 +31,7 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Dashboard data fetched successfully",
+      message: "Data fetched successfully",
       data: {
         users,
         blogs,

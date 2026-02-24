@@ -25,26 +25,23 @@ const BlogPage = () => {
     params: { page, limit },
   });
 
-  const blogs = data?.data || [];
-  const pagination = data?.pagination || {};
-  const hasMore = pagination?.hasMore;
+  const items = data?.data || [];
+  const hasMore = data?.pagination?.hasMore || false;
 
   const updateQueryParams = (updates = {}) => {
-    setSearchParams({
-      page,
-      limit,
-      type,
-      ...updates,
-    });
+    const newParams = new URLSearchParams(searchParams);
+    Object.entries(updates).forEach(([key, value]) => newParams.set(key, value));
+    setSearchParams(newParams);
   };
 
   const handleLoadMore = () => {
-    if (hasMore) {
-      updateQueryParams({ page: page + 1 });
-    }
+    if (!hasMore || isLoading) return;
+    updateQueryParams({ page: page + 1 });
   };
 
   const handleToggle = (selectedType) => {
+    if (selectedType === type) return;
+
     updateQueryParams({
       type: selectedType,
       page: 1,
@@ -56,7 +53,7 @@ const BlogPage = () => {
       <Navbar />
       <Hero src="/banner/NewsAndBlog.png" />
       <div className="container my-5">
-        <div className="d-flex justify-content-center mb-4">
+        <div className="d-flex justify-content-center mb-5">
           <div className="btn-group">
             <button
               className={`btn ${type === "blog"
@@ -83,7 +80,7 @@ const BlogPage = () => {
           <Loading fullScreen text={`Loading ${type === "blog" ? "blogs" : "news"}...`} />
         ) : (
           <div className="row g-4">
-            {blogs?.map((item) => (
+            {items?.map((item) => (
               <div key={item?._id} className="col-12 col-md-6 col-lg-4">
                 <BlogCard
                   image={`${import.meta.env.VITE_API_BASE_URL}/${item?.image}`}
@@ -108,6 +105,7 @@ const BlogPage = () => {
       {hasMore && (
         <LoadMoreButton
           onClick={handleLoadMore}
+          loading={isLoading && page > 1}
           className="px-3"
         />
       )}

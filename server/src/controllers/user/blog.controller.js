@@ -34,16 +34,13 @@ export const getBlogs = asyncHandler(async (req, res) => {
 
   const cumulativeLimit = page * limit;
 
-  const blogs = await BlogModel.find(filters)
-    .sort(sortOption)
-    .limit(cumulativeLimit)
-    .lean();
-
-  if (!blogs) {
-    throw new ApiError(404, "Blogs not found");
-  }
-
-  const total = await BlogModel.countDocuments(filters);
+  const [blogs, total] = await Promise.all([
+    BlogModel.find(filters)
+      .sort(sortOption)
+      .limit(cumulativeLimit)
+      .lean(),
+    BlogModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,

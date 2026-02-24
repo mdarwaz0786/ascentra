@@ -23,21 +23,17 @@ const PublicationPage = () => {
   });
 
   const publications = data?.data || [];
-  const pagination = data?.pagination || {};
-  const hasMore = pagination?.hasMore;
+  const hasMore = data?.pagination?.hasMore || false;
 
   const updateQueryParams = (updates = {}) => {
-    setSearchParams({
-      page,
-      limit,
-      ...updates,
-    });
+    const newParams = new URLSearchParams(searchParams);
+    Object.entries(updates).forEach(([key, value]) => newParams.set(key, value));
+    setSearchParams(newParams);
   };
 
   const handleLoadMore = () => {
-    if (hasMore) {
-      updateQueryParams({ page: page + 1 });
-    }
+    if (!hasMore || isLoading) return;
+    updateQueryParams({ page: page + 1 });
   };
 
   return (
@@ -75,6 +71,7 @@ const PublicationPage = () => {
         <LoadMoreButton
           onClick={handleLoadMore}
           className="px-3"
+          loading={isLoading && page > 1}
         />
       )}
       <Footer />

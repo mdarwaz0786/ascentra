@@ -10,7 +10,7 @@ import { buildPagination } from "../../utils/pagination.js";
 
 // Create publication
 export const createPublication = asyncHandler(async (req, res) => {
-  const { title, date, time, tags, shortDescription, fullDescription, status } = req.body;
+  const { title, date, time, tags, shortDescription, fullDescription } = req.body;
 
   if (!title || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
@@ -35,7 +35,6 @@ export const createPublication = asyncHandler(async (req, res) => {
       tags,
       shortDescription,
       fullDescription,
-      status,
       image: imagePath,
       banner: bannerPath,
       createdBy: req.user?._id,
@@ -70,7 +69,6 @@ export const getPublications = asyncHandler(async (req, res) => {
   if (search) {
     filters.$or = [
       { title: { $regex: search, $options: "i" } },
-      { shortDescription: { $regex: search, $options: "i" } },
     ];
   }
 
@@ -91,13 +89,14 @@ export const getPublications = asyncHandler(async (req, res) => {
     sortOption = sort;
   }
 
-  const publications = await PublicationModel.find(filters)
-    .sort(sortOption)
-    .skip(skip)
-    .limit(limit)
-    .lean();
-
-  const total = await PublicationModel.countDocuments(filters);
+  const [publications, total] = await Promise.all([
+    PublicationModel.find(filters)
+      .sort(sortOption)
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    PublicationModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,

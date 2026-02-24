@@ -10,7 +10,7 @@ import { buildPagination } from "../../utils/pagination.js";
 
 // Create media
 export const createMedia = asyncHandler(async (req, res) => {
-  const { title, source, date, time, link, shortDescription, status } = req.body;
+  const { title, source, date, time, link, shortDescription } = req.body;
 
   if (!title || !source || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
@@ -30,7 +30,6 @@ export const createMedia = asyncHandler(async (req, res) => {
       time,
       shortDescription,
       link,
-      status,
       image: imagePath,
       createdBy: req.user?._id,
     });
@@ -61,8 +60,6 @@ export const getMedia = asyncHandler(async (req, res) => {
   if (search) {
     filters.$or = [
       { title: { $regex: search, $options: "i" } },
-      { shortDescription: { $regex: search, $options: "i" } },
-      { source: { $regex: search, $options: "i" } },
     ];
   }
 
@@ -83,13 +80,14 @@ export const getMedia = asyncHandler(async (req, res) => {
     sortOption = sort;
   }
 
-  const media = await MediaModel.find(filters)
-    .sort(sortOption)
-    .skip(skip)
-    .limit(limit)
-    .lean();
-
-  const total = await MediaModel.countDocuments(filters);
+  const [media, total] = await Promise.all([
+    MediaModel.find(filters)
+      .sort(sortOption)
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    MediaModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,

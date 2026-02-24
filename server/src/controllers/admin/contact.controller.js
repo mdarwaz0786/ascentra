@@ -5,7 +5,7 @@ import { buildPagination } from "../../utils/pagination.js";
 
 // ================= CREATE CONTACT =================
 export const createContact = asyncHandler(async (req, res) => {
-  const { name, email, mobile, subject, message, status } = req.body;
+  const { name, email, mobile, subject, message } = req.body;
 
   if (!name || !email || !message) {
     throw new ApiError(400, "Required fields are missing");
@@ -17,7 +17,6 @@ export const createContact = asyncHandler(async (req, res) => {
     mobile,
     subject,
     message,
-    status: status === "true" || status === true,
   });
 
   return res.status(201).json({
@@ -47,7 +46,6 @@ export const getContacts = asyncHandler(async (req, res) => {
   if (search) {
     filters.$or = [
       { name: { $regex: search, $options: "i" } },
-      { email: { $regex: search, $options: "i" } },
       { mobile: { $regex: search, $options: "i" } },
     ];
   }
@@ -87,24 +85,20 @@ export const getContactById = asyncHandler(async (req, res) => {
 
   return res.status(200).json({
     success: true,
+    message: "Data fetched successfully",
     data: contact,
   });
 });
 
 // ================= UPDATE CONTACT =================
 export const updateContact = asyncHandler(async (req, res) => {
-  const { name, email, mobile, subject, message, status } = req.body;
+  const { status } = req.body;
 
   const contact = await ContactModel.findById(req.params.id);
   if (!contact) {
     throw new ApiError(404, "Contact not found");
   }
 
-  if (name !== undefined) contact.name = name;
-  if (email !== undefined) contact.email = email;
-  if (mobile !== undefined) contact.mobile = mobile;
-  if (subject !== undefined) contact.subject = subject;
-  if (message !== undefined) contact.message = message;
   if (status !== undefined) contact.status = status === "true" || status === true;
 
   await contact.save();

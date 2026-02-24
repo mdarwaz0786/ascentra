@@ -34,16 +34,13 @@ export const getMedia = asyncHandler(async (req, res) => {
 
   const cumulativeLimit = page * limit;
 
-  const mediaItems = await MediaModel.find(filters)
-    .sort(sortOption)
-    .limit(cumulativeLimit)
-    .lean();
-
-  if (!mediaItems) {
-    throw new ApiError(404, "Media not found");
-  }
-
-  const total = await MediaModel.countDocuments(filters);
+  const [mediaItems, total] = await Promise.all([
+    MediaModel.find(filters)
+      .sort(sortOption)
+      .limit(cumulativeLimit)
+      .lean(),
+    MediaModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,

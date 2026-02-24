@@ -10,7 +10,7 @@ import { buildPagination } from "../../utils/pagination.js";
 
 // Create blog
 export const createBlog = asyncHandler(async (req, res) => {
-  const { title, date, time, shortDescription, fullDescription, status } = req.body;
+  const { title, date, time, shortDescription, fullDescription } = req.body;
 
   if (!title || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
@@ -34,7 +34,6 @@ export const createBlog = asyncHandler(async (req, res) => {
       time,
       shortDescription,
       fullDescription,
-      status,
       image: imagePath,
       banner: bannerPath,
       createdBy: req.user?._id,
@@ -69,7 +68,6 @@ export const getBlogs = asyncHandler(async (req, res) => {
   if (search) {
     filters.$or = [
       { title: { $regex: search, $options: "i" } },
-      { shortDescription: { $regex: search, $options: "i" } },
     ];
   }
 
@@ -90,13 +88,14 @@ export const getBlogs = asyncHandler(async (req, res) => {
     sortOption = sort;
   }
 
-  const blogs = await BlogModel.find(filters)
-    .sort(sortOption)
-    .skip(skip)
-    .limit(limit)
-    .lean();
-
-  const total = await BlogModel.countDocuments(filters);
+  const [blogs, total] = await Promise.all([
+    BlogModel.find(filters)
+      .sort(sortOption)
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    BlogModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,

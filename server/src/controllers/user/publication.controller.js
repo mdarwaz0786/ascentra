@@ -34,16 +34,13 @@ export const getPublications = asyncHandler(async (req, res) => {
 
   const cumulativeLimit = page * limit;
 
-  const publications = await PublicationModel.find(filters)
-    .sort(sortOption)
-    .limit(cumulativeLimit)
-    .lean();
-
-  if (!publications) {
-    throw new ApiError(404, "Publications not found");
-  }
-
-  const total = await PublicationModel.countDocuments(filters);
+  const [publications, total] = await Promise.all([
+    PublicationModel.find(filters)
+      .sort(sortOption)
+      .limit(cumulativeLimit)
+      .lean(),
+    PublicationModel.countDocuments(filters),
+  ]);
 
   return res.status(200).json({
     success: true,
