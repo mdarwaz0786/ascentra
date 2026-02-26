@@ -11,6 +11,8 @@ const Hero = ({
         alt={alt}
         className="img-fluid w-100"
         style={{ height, objectFit: "cover" }}
+        fetchpriority="high"
+        decoding="sync"
       />
     </section>
   );
