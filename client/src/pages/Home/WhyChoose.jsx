@@ -5,7 +5,6 @@ const WhyChoose = () => {
     <section className="py-5" style={{ background: "#fff" }}>
       <div className="container">
         <div className="row align-items-center g-5">
-
           {/* LEFT CONTENT */}
           <div className="col-lg-6">
             <h2 className="fw-bold mb-4">Why Choose Us</h2>
@@ -33,7 +32,6 @@ const WhyChoose = () => {
               className="img-fluid rounded"
             />
           </div>
-
         </div>
       </div>
     </section>

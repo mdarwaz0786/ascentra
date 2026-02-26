@@ -17,6 +17,7 @@ import PublicationDetailPage from "./pages/Publication/PublicationDetailPage";
 import MediaDetailPage from "./pages/Media/MediaDetailPage";
 import BlogDetailPage from "./pages/Blog/BlogDetailPage";
 import NewsDetailPage from "./pages/Blog/NewsDetailPage";
+import GrowthFrameworkPage from "./pages/GrowthFramework/GrowthFrameworkPage";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/news/:slug" element={<NewsDetailPage />} />
         <Route path="/career" element={<CareerPage />} />
         <Route path="/our-core-strength" element={<TestimonialPage />} />
+        <Route path="/our-growth-framework" element={<GrowthFrameworkPage />} />
       </Routes>
     </>
   );

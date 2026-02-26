@@ -3,31 +3,34 @@ const OurAdvantageSection = () => {
     <div className="py-5" style={{ background: "#ffffff" }}>
       <div className="container">
         <div className="row justify-content-center g-5">
-
-          {/* LEFT IMAGE */}
-          <div className="col-lg-5 mt-5">
-            <img
-              src="/aboutus/OURADVANTAGE.png"
-              alt="About Us"
-              className="img-fluid rounded"
-            />
-          </div>
-
-          {/* RIGHT CONTENT */}
+          {/* LEFT CONTENT */}
           <div className="col-lg-7">
             <h4 className="fw-semibold mb-4">OUR ADVANTAGE</h4>
 
-            <p className="fs-5 mb-4">
-              Founded on enduring values of integrity, discipline, and excellence, ACE ASCENTRA supports universities, education providers, and corporate organisations in entering, establishing, and scaling successfully across India, South Asia, and the UAE. We combine deep regional insight with global perspective to help institutions navigate complex markets with clarity and confidence.
+            <p className="fs-5 mb-3">
+              Our strength lies in combining regional depth with international standards of governance and delivery.
             </p>
 
-            <p className="fs-5 mb-4">
-              As higher education becomes increasingly globalised and policy frameworks such as India’s National Education Policy 2020 drive international engagement, institutions are seeking credible partners who can translate ambition into structured outcomes. ACE ASCENTRA works at this intersection—enabling international collaborations, research partnerships, student mobility, and meaningful institutional engagement aligned with global benchmarks.
+            <p className="fs-5 mb-3">
+              With established networks across academia, industry, schools, government bodies, and recruitment ecosystems, we provide institutions with access that would otherwise take years to build.
             </p>
 
-            <p className="fs-5 mb-4">
-              We go beyond advisory to deliver execution. Acting as an extension of your team, we leverage established networks, proven operational models, and in-market expertise to deliver measurable outcomes across student recruitment, strategic partnerships, brand positioning, and long-term institutional growth.
+            <p className="fs-5 mb-3">
+              We understand evolving policy landscapes — including reforms such as India’s National Education Policy 2020 — and translate them into actionable institutional opportunities.
             </p>
+
+            <p className="fs-5 mb-0">
+              Beyond strategy, we embed ourselves operationally — acting as an extension of your team to deliver measurable progress in research collaborations, student mobility, brand positioning, and long-term institutional growth.
+            </p>
+          </div>
+
+          {/* RIGHT IMAGE */}
+          <div className="col-lg-5">
+            <img
+              src="/aboutus/OURADVANTAGE.png"
+              alt="Our Advantage"
+              className="img-fluid rounded"
+            />
           </div>
         </div>
       </div>

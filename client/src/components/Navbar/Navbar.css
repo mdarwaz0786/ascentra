@@ -1,11 +1,18 @@
 /* NAVBAR */
 .custom-navbar {
   border-bottom: 1px solid #eee;
+  padding: 0 !important;
+}
+
+.navbar-brand {
+  padding: 0;
 }
 
 /* LOGO */
-.navbar-logo {
-  height: 70px;
+.navbar-brand .navbar-logo {
+  height: 90px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 /* LINKS */
@@ -15,7 +22,11 @@
   padding: 10px 14px;
   position: relative;
   transition: 0.3s;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 16px;
 }
 
 /* ACTIVE + HOVER COLOR */

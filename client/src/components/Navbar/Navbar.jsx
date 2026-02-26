@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg bg-white custom-navbar">
-      <div className="container">
+      <div className="container-fluid">
 
         {/* LOGO */}
         <a className="navbar-brand" href="/">
@@ -61,6 +61,7 @@ const Navbar = () => {
               <ul className="dropdown-menu modern-dropdown">
                 <li><Link className="dropdown-item" to="/about-us">About Us</Link></li>
                 <li><Link className="dropdown-item" to="/our-core-strength">Our Team</Link></li>
+                <li><Link className="dropdown-item" to="/our-growth-framework">Our Growth Framework</Link></li>
               </ul>
             </li>
 

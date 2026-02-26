@@ -1,6 +1,6 @@
 import { FaLinkedinIn, FaTwitter, FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+// import logo from "../../assets/logo.png";
 import "./Footer.css";
 
 const Footer = () => {
@@ -10,7 +10,8 @@ const Footer = () => {
         <div className="row gy-4">
           {/* BRAND */}
           <div className="col-lg-4 col-md-6">
-            <img src={logo} alt="logo" className="footer-logo" />
+            {/* <img src={logo} alt="logo" className="footer-logo" /> */}
+            <h6 className="footer-title">About us</h6>
             <p className="footer-text mt-3">
               Delivering trusted advisory, consulting, and strategic insights
               with a global perspective and local expertise.

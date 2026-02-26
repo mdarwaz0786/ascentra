@@ -7,7 +7,7 @@ const SliderSection = () => {
 
   const slides = [
     { id: 1, image: "/banner/Banner3.png", link: "/" },
-    { id: 1, image: "/banner/Banner2.png", link: "/" },
+    { id: 2, image: "/banner/Banner2.png", link: "/" },
   ];
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 const GrowthFrameworkSection = () => {
   return (
-    <div className="py-5">
+    <div className="py-5" style={{ background: "#fff" }}>
       <div className="container">
         <div className="row justify-content-center g-5">
           {/* LEFT CONTENT */}

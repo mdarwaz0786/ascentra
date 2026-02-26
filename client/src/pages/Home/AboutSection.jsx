@@ -2,39 +2,29 @@ const AboutSection = () => {
   return (
     <div className="py-5">
       <div className="container">
-        <div className="row align-items-center justify-content-center g-5">
-
+        <div className="row justify-content-center g-5">
           {/* LEFT IMAGE */}
-          <div className="col-lg-5 mt-3">
+          <div className="col-lg-5">
             <img
               src="/aboutus/AboutUs.png"
               alt="About Us"
-              className="img-fluid w-100 h-100 rounded"
+              className="img-fluid rounded"
             />
           </div>
-
           {/* RIGHT CONTENT */}
           <div className="col-lg-7">
             <h4 className="fw-semibold mb-4">ABOUT US</h4>
 
-            <p className="fs-5 mb-4">
-              ACE ASCENTRA Consulting is a strategic advisory and execution firm
-              supporting global universities, education providers, and
-              enterprises seeking to establish and grow their presence in India,
-              South Asia, and the UAE.
+            <p className="fs-5 mb-3">
+              ACE ASCENTRA Consulting is a strategic advisory and execution firm enabling global universities, education providers, and enterprises to establish and expand across India, South Asia, and the UAE.
             </p>
 
-            <p className="fs-5 mb-4">
-              We deliver end-to-end market solutions—from research and strategy
-              to on-ground execution and performance management. Our work is
-              defined by deep local insight, rigorous planning, and disciplined
-              delivery.
+            <p className="fs-5 mb-3">
+              We provide structured market entry and expansion solutions — from feasibility assessment and strategy design to on-ground implementation and ongoing performance oversight.
             </p>
 
-            <p className="fs-5 mb-4">
-              From day one, we operate as your trusted in-country "partner",
-              providing advisory, liaison, compliance, and operational support
-              to ensure a strong, sustainable foundation.
+            <p className="fs-5 mb-0">
+              Operating as your in-country representative, we ensure institutional credibility, regulatory alignment, and operational stability from the outset. Our role is to help you enter new markets with clarity, structure, and controlled risk.
             </p>
           </div>
         </div>

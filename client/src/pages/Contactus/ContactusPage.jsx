@@ -245,7 +245,7 @@ const ContactusPage = () => {
           <div className="ratio ratio-21x9">
             <iframe
               title="Google Map"
-              src="https://www.google.com/maps?q=New%20Delhi%20India&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.3491085129845!2d77.21364402429036!3d28.55927773740567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce26a17c97447%3A0x2933bfed2d404d7b!2sNeeti%20Bagh%2C%20New%20Delhi%2C%20Delhi%20110049!5e0!3m2!1sen!2sin!4v1772088801470!5m2!1sen!2sin"
               loading="lazy"
             ></iframe>
           </div>
