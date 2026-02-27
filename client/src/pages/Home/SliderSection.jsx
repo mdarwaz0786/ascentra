@@ -6,8 +6,8 @@ const SliderSection = () => {
   const [active, setActive] = useState(0);
 
   const slides = [
-    { id: 1, image: "/banner/Banner3.png", link: "/" },
-    { id: 2, image: "/banner/Banner2.png", link: "/" },
+    { id: 1, image: "/banner/Banner4.png", link: "/" },
+    { id: 2, image: "/banner/Banner5.png", link: "/" },
   ];
 
   useEffect(() => {
