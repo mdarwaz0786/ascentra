@@ -39,7 +39,7 @@ const PublicationPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/Publications.png" />
+      <Hero src="/banner/Publications2.png" />
       <div className="container my-5">
         {isLoading && page === 1 ? (
           <Loading fullScreen text="Loading publications..." />

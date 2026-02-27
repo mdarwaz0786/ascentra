@@ -129,7 +129,7 @@ const AddMediaPage = () => {
       />
 
       <Image
-        label="Image"
+        label="Image (518 x 320)"
         name="image"
         value={form.image}
         onChange={(file) => handleFileChange(file, "image")}

@@ -37,7 +37,7 @@ const MediaPage = () => {
   return (
     <>
       <Navbar />
-      <Hero src="/banner/Media.png" />
+      <Hero src="/banner/Media2.png" />
       <div className="container my-5">
         {isLoading && page === 1 ? (
           <Loading fullScreen text="Loading media items..." />

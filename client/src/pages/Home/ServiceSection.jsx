@@ -61,15 +61,15 @@ const ServiceSection = () => {
       <div className="container">
         <h4 className="text-center fw-semibold mb-4">SERVICES</h4>
         <div className="row g-4">
-          {services.map((service, index) => (
+          {services?.map((service, index) => (
             <div className="col-lg-6 col-md-6" key={index}>
               <div className="service-card">
                 <div className="service-card-inner">
                   {/* FRONT SIDE */}
                   <div className="service-card-front">
-                    <img src={service.img} alt={service.title} />
+                    <img src={service?.img} alt={service?.title} />
                     <div className="service-footer">
-                      <span>{service.title}</span>
+                      <span>{service?.title}</span>
                       <div className="service-icon">
                         <FaArrowRight />
                       </div>
@@ -78,9 +78,9 @@ const ServiceSection = () => {
 
                   {/* BACK SIDE */}
                   <div className="service-card-back" onClick={() => navigate(service?.navigate)}>
-                    <h5>{service.title}</h5>
+                    <h5 className="mb-3">{service?.title}</h5>
                     <ul className="custom-list">
-                      {service.items.map((item, i) => (
+                      {service?.items?.map((item, i) => (
                         <li key={i}>
                           <FaGlobe className="list-icon" />
                           <span>{item}</span>

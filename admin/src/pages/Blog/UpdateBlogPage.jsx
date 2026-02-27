@@ -139,7 +139,7 @@ const UpdateBlogPage = () => {
       />
 
       <Image
-        label="Image"
+        label="Image (518 x 320)"
         name="image"
         value={form.image}
         onChange={(file) => handleFileChange(file, "image")}
@@ -149,7 +149,7 @@ const UpdateBlogPage = () => {
       />
 
       <Image
-        label="Banner"
+        label="Banner (3320 x 1500)"
         name="banner"
         value={form.banner}
         onChange={(file) => handleFileChange(file, "banner")}
