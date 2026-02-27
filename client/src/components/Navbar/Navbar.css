@@ -2,6 +2,10 @@
 .custom-navbar {
   border-bottom: 1px solid #eee;
   padding: 0 !important;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #fff;
 }
 
 .navbar-brand {
