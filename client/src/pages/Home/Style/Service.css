@@ -13,6 +13,10 @@
   height: 100%;
   transition: transform 2s ease;
   transform-style: preserve-3d;
+
+  /* FOR SAFARI */
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .service-card:hover .service-card-inner {
@@ -27,6 +31,10 @@
   border-radius: 22px;
   backface-visibility: hidden;
   overflow: hidden;
+
+  /* FOR SAFARI */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .service-card-front img {
@@ -78,6 +86,11 @@
   transform: rotateY(180deg);
 }
 
+.service-card-back * {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
 .service-card-back h4 {
   font-weight: 700;
   margin-bottom: 12px;
@@ -106,7 +119,6 @@
 
 .custom-list li {
   display: flex;
-  /* align-items: center; */
   margin-bottom: 16px;
   gap: 8px;
 }

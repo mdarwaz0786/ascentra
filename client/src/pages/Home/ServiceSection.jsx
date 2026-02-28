@@ -7,6 +7,7 @@ const ServiceSection = () => {
 
   const services = [
     {
+      id: 1,
       img: "/service/service1.png",
       title: "Research, Academic & Innovation Partnerships",
       navigate: "market-development",
@@ -19,6 +20,7 @@ const ServiceSection = () => {
       ],
     },
     {
+      id: 2,
       img: "/service/service2.png",
       title: "In-Country Representation & Market Growth",
       navigate: "market-entry",
@@ -31,6 +33,7 @@ const ServiceSection = () => {
       ],
     },
     {
+      id: 3,
       img: "/service/service3.png",
       title: "Events, Outreach & Engagement",
       navigate: "market-presence",
@@ -43,6 +46,7 @@ const ServiceSection = () => {
       ],
     },
     {
+      id: 4,
       img: "/service/service4.png",
       title: "Operational & Compliance Support",
       navigate: "market-expansion",
@@ -61,8 +65,8 @@ const ServiceSection = () => {
       <div className="container">
         <h4 className="text-center fw-semibold mb-4">SERVICES</h4>
         <div className="row g-4">
-          {services?.map((service, index) => (
-            <div className="col-lg-6 col-md-6" key={index}>
+          {services?.map((service) => (
+            <div className="col-lg-6 col-md-6" key={service?.id}>
               <div className="service-card">
                 <div className="service-card-inner">
                   {/* FRONT SIDE */}
