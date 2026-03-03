@@ -21,7 +21,7 @@ const Dashboard = () => {
     { label: "News", value: data?.data?.news, icon: <FaGlobe size={20} />, color: "text-success", to: "/news/list" },
     { label: "Media", value: data?.data?.media, icon: <FaThLarge size={20} />, color: "text-warning", to: "/media/list" },
     { label: "Publication", value: data?.data?.publications, icon: <FaTags size={20} />, color: "text-danger", to: "/publication/list" },
-    { label: "User", value: data?.data?.users, icon: <FaUsers size={20} />, color: "text-danger", to: "/user/list" },
+    // { label: "User", value: data?.data?.users, icon: <FaUsers size={20} />, color: "text-danger", to: "/user/list" },
     { label: "Contact Enquiry", value: data?.data?.contacts, icon: <FaEnvelopeOpenText size={20} />, color: "text-danger", to: "/contact/list" },
     { label: "Resume", value: data?.data?.contacts, icon: <FaFileAlt size={20} />, color: "text-danger", to: "/resume/list" },
   ];
