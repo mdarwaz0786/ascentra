@@ -86,7 +86,7 @@ const ContactusPage = () => {
                   <p className="text-muted mb-0">
                     A-143, Upper Ground Floor, Neeti Bagh, New Delhi-110049, India <br />
                     T: +91-11-40522433/40536792 <br />
-                    E: xxxxx@ace.com <br />
+                    E: contact@aceascentra.com <br />
                     Mobile: +91-9650050798
                   </p>
                 </div>
@@ -101,7 +101,7 @@ const ContactusPage = () => {
                     </span>
                   </div>
                   <h5 className="fw-semibold">Email Us</h5>
-                  <p className="text-muted mb-0">xxxxx@ace.com</p>
+                  <p className="text-muted mb-0">contact@aceascentra.com</p>
                 </div>
               </div>
 
