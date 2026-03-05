@@ -2,6 +2,7 @@ const TestimonialCard = ({
   description,
   image,
   name,
+  email,
   designation,
   index,
 }) => {
@@ -38,6 +39,11 @@ const TestimonialCard = ({
             <p className="fs-5 mb-4">
               {description}
             </p>
+            {email && (
+              <p className="text-muted">
+                <strong>Email:</strong> {email}
+              </p>
+            )}
           </div>
         </div>
       </div>
