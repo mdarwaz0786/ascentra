@@ -7,10 +7,22 @@ import { generateUniqueSlug } from "../../helpers/generateUniqueSlug.js";
 import fs from "fs";
 import path from "path";
 import { buildPagination } from "../../utils/pagination.js";
+import { upsertMeta } from "../../utils/meta.js";
+import MetaModel from "../../models/meta.model.js";
 
 // Create news
 export const createNews = asyncHandler(async (req, res) => {
-  const { title, date, time, shortDescription, fullDescription } = req.body;
+  const {
+    title,
+    date,
+    time,
+    shortDescription,
+    fullDescription,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+  } = req.body;
 
   if (!title || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
@@ -18,6 +30,7 @@ export const createNews = asyncHandler(async (req, res) => {
 
   let imagePath = null;
   let bannerPath = null;
+  let metaImagePath = null;
 
   try {
     if (req.files?.image?.[0]) {
@@ -26,6 +39,10 @@ export const createNews = asyncHandler(async (req, res) => {
 
     if (req.files?.banner?.[0]) {
       bannerPath = await compressImage(req.files.banner[0].buffer, "news");
+    }
+
+    if (req.files?.metaImage?.[0]) {
+      metaImagePath = await compressImage(req.files.metaImage[0].buffer, "meta");
     }
 
     const news = await NewsModel.create({
@@ -43,6 +60,17 @@ export const createNews = asyncHandler(async (req, res) => {
     news.slug = slug;
     await news.save();
 
+    await upsertMeta({
+      pageName: "news-detail",
+      metaTitle: metaTitle || title,
+      metaDescription,
+      metaKeywords,
+      metaAuthor,
+      metaImage: metaImagePath,
+      slug,
+      userId: req.user?._id,
+    })
+
     return res.status(201).json({ success: true, message: "Created Successfully", data: news });
   } catch (error) {
     if (imagePath && fs.existsSync(path.join(process.cwd(), imagePath))) {
@@ -50,6 +78,9 @@ export const createNews = asyncHandler(async (req, res) => {
     }
     if (bannerPath && fs.existsSync(path.join(process.cwd(), bannerPath))) {
       fs.unlinkSync(path.join(process.cwd(), bannerPath));
+    }
+    if (metaImagePath && fs.existsSync(path.join(process.cwd(), metaImagePath))) {
+      fs.unlinkSync(path.join(process.cwd(), metaImagePath));
     }
     throw new ApiError(500, error.message || "Something went wrong");
   }
@@ -118,11 +149,32 @@ export const getNewsById = asyncHandler(async (req, res) => {
 
 // Update news
 export const updateNews = asyncHandler(async (req, res) => {
-  const { title, date, time, shortDescription, fullDescription, status } = req.body;
+  const {
+    title,
+    date,
+    time,
+    shortDescription,
+    fullDescription,
+    status,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+  } = req.body;
 
   const news = await NewsModel.findById(req.params.id);
   if (!news) {
     throw new ApiError(404, "News not found");
+  }
+
+  const meta = await MetaModel.findOne({ slug: news?.slug });
+
+  let metaImagePath = null;
+  if (req.files?.metaImage?.[0]) {
+    if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+      fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
+    }
+    metaImagePath = await compressImage(req.files.metaImage[0].buffer, "meta");
   }
 
   if (req.files?.image?.[0]) {
@@ -139,13 +191,14 @@ export const updateNews = asyncHandler(async (req, res) => {
     news.banner = await compressImage(req.files.banner[0].buffer, "news");
   }
 
+  let newSlug = null;
   if (title && title !== news.title) {
     await SlugModel.deleteOne({
       collectionName: "News",
       documentId: news._id,
     });
 
-    const newSlug = await generateUniqueSlug(title, "News", news._id, "news");
+    newSlug = await generateUniqueSlug(title, "News", news._id, "news");
     news.slug = newSlug;
   }
 
@@ -156,8 +209,19 @@ export const updateNews = asyncHandler(async (req, res) => {
   news.fullDescription = fullDescription || news.fullDescription;
   news.status = typeof status === "boolean" ? status : news.status;
   news.updatedBy = req.user?._id;
+  news.updatedAt = new Date();
 
   await news.save();
+
+  await upsertMeta({
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+    metaImage: metaImagePath,
+    slug: newSlug,
+    userId: req.user?._id,
+  });
 
   return res.status(200).json({
     success: true,
@@ -173,6 +237,8 @@ export const deleteNews = asyncHandler(async (req, res) => {
     throw new ApiError(404, "News not found");
   }
 
+  const meta = await MetaModel.findOne({ slug: news?.slug });
+
   if (news?.image && fs.existsSync(path.join(process.cwd(), news.image))) {
     fs.unlinkSync(path.join(process.cwd(), news.image));
   }
@@ -181,12 +247,17 @@ export const deleteNews = asyncHandler(async (req, res) => {
     fs.unlinkSync(path.join(process.cwd(), news.banner));
   }
 
+  if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+    fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
+  }
+
   await SlugModel.deleteOne({
     collectionName: "News",
     documentId: news._id,
   });
 
   await news.deleteOne();
+  await meta.deleteOne();
 
   return res.status(200).json({
     success: true,

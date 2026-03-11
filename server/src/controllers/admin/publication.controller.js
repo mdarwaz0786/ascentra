@@ -7,10 +7,23 @@ import { generateUniqueSlug } from "../../helpers/generateUniqueSlug.js";
 import fs from "fs";
 import path from "path";
 import { buildPagination } from "../../utils/pagination.js";
+import { upsertMeta } from "../../utils/meta.js";
+import MetaModel from "../../models/meta.model.js";
 
 // Create publication
 export const createPublication = asyncHandler(async (req, res) => {
-  const { title, date, time, tags, shortDescription, fullDescription } = req.body;
+  const {
+    title,
+    date,
+    time,
+    tags,
+    shortDescription,
+    fullDescription,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+  } = req.body;
 
   if (!title || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
@@ -18,6 +31,7 @@ export const createPublication = asyncHandler(async (req, res) => {
 
   let imagePath = null;
   let bannerPath = null;
+  let metaImagePath = null;
 
   try {
     if (req.files?.image?.[0]) {
@@ -26,6 +40,10 @@ export const createPublication = asyncHandler(async (req, res) => {
 
     if (req.files?.banner?.[0]) {
       bannerPath = await compressImage(req.files.banner[0].buffer, "publication");
+    }
+
+    if (req.files?.metaImage?.[0]) {
+      metaImagePath = await compressImage(req.files.metaImage[0].buffer, "meta");
     }
 
     const publication = await PublicationModel.create({
@@ -44,6 +62,17 @@ export const createPublication = asyncHandler(async (req, res) => {
     publication.slug = slug;
     await publication.save();
 
+    await upsertMeta({
+      pageName: "publication-detail",
+      metaTitle: metaTitle || title,
+      metaDescription,
+      metaKeywords,
+      metaAuthor,
+      metaImage: metaImagePath,
+      slug,
+      userId: req.user?._id,
+    });
+
     return res.status(201).json({ success: true, message: "Created successfully", data: publication });
   } catch (error) {
     if (imagePath && fs.existsSync(path.join(process.cwd(), imagePath))) {
@@ -51,6 +80,9 @@ export const createPublication = asyncHandler(async (req, res) => {
     }
     if (bannerPath && fs.existsSync(path.join(process.cwd(), bannerPath))) {
       fs.unlinkSync(path.join(process.cwd(), bannerPath));
+    }
+    if (metaImagePath && fs.existsSync(path.join(process.cwd(), metaImagePath))) {
+      fs.unlinkSync(path.join(process.cwd(), metaImagePath));
     }
     throw new ApiError(500, error.message || "Something went wrong");
   }
@@ -119,12 +151,25 @@ export const getPublicationById = asyncHandler(async (req, res) => {
 
 // Update publication
 export const updatePublication = asyncHandler(async (req, res) => {
-  const { title, date, time, shortDescription, fullDescription, status } = req.body;
+  const {
+    title,
+    date,
+    time,
+    shortDescription,
+    fullDescription,
+    status,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+  } = req.body;
 
   const publication = await PublicationModel.findById(req.params.id);
   if (!publication) {
     throw new ApiError(404, "Publication not found");
   }
+
+  const meta = await MetaModel.findOne({ slug: publication?.slug });
 
   if (req.files?.image?.[0]) {
     if (publication?.image && fs.existsSync(path.join(process.cwd(), publication.image))) {
@@ -140,13 +185,22 @@ export const updatePublication = asyncHandler(async (req, res) => {
     publication.banner = await compressImage(req.files.banner[0].buffer, "publication");
   }
 
+  let metaImagePath = null;
+  if (req.files?.metaImage?.[0]) {
+    if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+      fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
+    }
+    metaImagePath = await compressImage(req.files.metaImage[0].buffer, "meta");
+  }
+
+  let newSlug = null;
   if (title && title !== publication.title) {
     await SlugModel.deleteOne({
       collectionName: "Publication",
       documentId: publication._id,
     });
 
-    const newSlug = await generateUniqueSlug(title, "Publication", publication._id, "publications");
+    newSlug = await generateUniqueSlug(title, "Publication", publication._id, "publications");
     publication.slug = newSlug;
   }
 
@@ -157,8 +211,19 @@ export const updatePublication = asyncHandler(async (req, res) => {
   publication.fullDescription = fullDescription || publication.fullDescription;
   publication.status = typeof status === "boolean" ? status : publication.status;
   publication.updatedBy = req.user?._id;
+  publication.updatedAt = new Date();
 
   await publication.save();
+
+  await upsertMeta({
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+    metaImage: metaImagePath,
+    slug: newSlug,
+    userId: req.user?._id,
+  });
 
   return res.status(200).json({
     success: true,
@@ -174,6 +239,8 @@ export const deletePublication = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Publication not found");
   }
 
+  const meta = await MetaModel.findOne({ slug: publication?.slug });
+
   if (publication?.image && fs.existsSync(path.join(process.cwd(), publication.image))) {
     fs.unlinkSync(path.join(process.cwd(), publication.image));
   }
@@ -182,12 +249,17 @@ export const deletePublication = asyncHandler(async (req, res) => {
     fs.unlinkSync(path.join(process.cwd(), publication.banner));
   }
 
+  if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+    fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
+  }
+
   await SlugModel.deleteOne({
     collectionName: "Publication",
     documentId: publication._id,
   });
 
   await publication.deleteOne();
+  await meta.deleteOne();
 
   return res.status(200).json({
     success: true,

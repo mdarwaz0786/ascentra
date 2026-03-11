@@ -12,6 +12,7 @@ router.post(
   upload.fields([
     { name: "image", maxCount: 1 },
     { name: "banner", maxCount: 1 },
+    { name: "metaImage", maxCount: 1 },
   ]),
   validateFileSize,
   createNews,
@@ -26,6 +27,7 @@ router.patch(
   upload.fields([
     { name: "image", maxCount: 1 },
     { name: "banner", maxCount: 1 },
+    { name: "metaImage", maxCount: 1 },
   ]),
   validateFileSize,
   updateNews,

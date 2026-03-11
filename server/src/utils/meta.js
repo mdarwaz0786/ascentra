@@ -2,13 +2,13 @@ import MetaModel from "../models/meta.model.js";
 
 export const upsertMeta = async ({
   pageName,
-  slug,
   metaTitle,
   metaDescription,
   metaKeywords,
   metaAuthor,
   metaImage,
   canonicalUrl,
+  slug,
   userId,
 }) => {
   const query = {};

@@ -7,20 +7,38 @@ import { generateUniqueSlug } from "../../helpers/generateUniqueSlug.js";
 import fs from "fs";
 import path from "path";
 import { buildPagination } from "../../utils/pagination.js";
+import { upsertMeta } from "../../utils/meta.js";
+import MetaModel from "../../models/meta.model.js";
 
 // Create media
 export const createMedia = asyncHandler(async (req, res) => {
-  const { title, source, date, time, link, shortDescription } = req.body;
+  const {
+    title,
+    source,
+    date,
+    time,
+    link,
+    shortDescription,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+  } = req.body;
 
   if (!title || !source || !date || !shortDescription) {
     throw new ApiError(400, "Required fields are missing");
   }
 
   let imagePath = null;
+  let metaImagePath = null;
 
   try {
     if (req.files?.image?.[0]) {
       imagePath = await compressImage(req.files.image[0].buffer, "media");
+    }
+
+    if (req.files?.metaImage?.[0]) {
+      metaImagePath = await compressImage(req.files.metaImage[0].buffer, "meta");
     }
 
     const media = await MediaModel.create({
@@ -38,10 +56,24 @@ export const createMedia = asyncHandler(async (req, res) => {
     media.slug = slug;
     await media.save();
 
+    await upsertMeta({
+      pageName: "media-detail",
+      metaTitle: metaTitle || title,
+      metaDescription,
+      metaKeywords,
+      metaAuthor,
+      metaImage: metaImagePath,
+      slug,
+      userId: req.user?._id,
+    });
+
     return res.status(201).json({ success: true, message: "Created successfully", data: media });
   } catch (error) {
     if (imagePath && fs.existsSync(path.join(process.cwd(), imagePath))) {
       fs.unlinkSync(path.join(process.cwd(), imagePath));
+    }
+    if (metaImagePath && fs.existsSync(path.join(process.cwd(), metaImagePath))) {
+      fs.unlinkSync(path.join(process.cwd(), metaImagePath));
     }
     throw new ApiError(500, error.message || "Something went wrong");
   }
@@ -110,11 +142,33 @@ export const getMediaById = asyncHandler(async (req, res) => {
 
 // Update media
 export const updateMedia = asyncHandler(async (req, res) => {
-  const { title, source, date, time, link, shortDescription, status } = req.body;
+  const {
+    title,
+    source,
+    date,
+    time,
+    link,
+    shortDescription,
+    status,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+  } = req.body;
 
   const media = await MediaModel.findById(req.params.id);
   if (!media) {
     throw new ApiError(404, "Media not found");
+  }
+
+  const meta = await MetaModel.findOne({ slug: meta?.slug });
+
+  let metaImagePath = null;
+  if (req.files?.metaImage?.[0]) {
+    if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+      fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
+    }
+    metaImagePath = await compressImage(req.files.metaImage[0].buffer, "meta");
   }
 
   if (req.files?.image?.[0]) {
@@ -124,13 +178,14 @@ export const updateMedia = asyncHandler(async (req, res) => {
     media.image = await compressImage(req.files.image[0].buffer, "media");
   }
 
+  let newSlug = null;
   if (title && title !== media.title) {
     await SlugModel.deleteOne({
       collectionName: "Media",
       documentId: media._id,
     });
 
-    const newSlug = await generateUniqueSlug(title, "Media", media._id, "media");
+    newSlug = await generateUniqueSlug(title, "Media", media._id, "media");
     media.slug = newSlug;
   }
 
@@ -142,8 +197,19 @@ export const updateMedia = asyncHandler(async (req, res) => {
   media.shortDescription = shortDescription || media.shortDescription;
   media.status = typeof status === "boolean" ? status : media.status;
   media.updatedBy = req.user?._id;
+  media.updatedAt = new Date();
 
   await media.save();
+
+  await upsertMeta({
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    metaAuthor,
+    metaImage: metaImagePath,
+    slug: newSlug,
+    userId: req.user?._id,
+  });
 
   return res.status(200).json({
     success: true,
@@ -159,8 +225,18 @@ export const deleteMedia = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Media not found");
   }
 
+  const meta = await MetaModel.findOne({ slug: media?.slug });
+
   if (media?.image && fs.existsSync(path.join(process.cwd(), media.image))) {
     fs.unlinkSync(path.join(process.cwd(), media.image));
+  }
+
+  if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+    fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
+  }
+
+  if (meta?.metaImage && fs.existsSync(path.join(process.cwd(), meta?.metaImage))) {
+    fs.unlinkSync(path.join(process.cwd(), meta?.metaImage));
   }
 
   await SlugModel.deleteOne({
@@ -169,6 +245,7 @@ export const deleteMedia = asyncHandler(async (req, res) => {
   });
 
   await media.deleteOne();
+  await meta.deleteOne();
 
   return res.status(200).json({
     success: true,

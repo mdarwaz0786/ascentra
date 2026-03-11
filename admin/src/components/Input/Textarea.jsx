@@ -6,9 +6,10 @@ const Textarea = ({
   required = false,
   rows = 4,
   error,
+  width,
 }) => {
   return (
-    <div className="form-wrap mb-3">
+    <div className={`form-wrap ${width} mb-4`}>
       <label className="col-form-label" htmlFor={name}>
         {label} {required && <span className="text-danger">*</span>}
       </label>

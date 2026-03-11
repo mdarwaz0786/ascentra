@@ -7,6 +7,7 @@ import ContactModel from "../../models/contact.model.js";
 import ResumeModel from "../../models/resume.model.js";
 import ApiError from "../../helpers/apiError.js";
 import asyncHandler from "../../helpers/asyncHandler.js";
+import MetaModel from "../../models/meta.model.js";
 
 // Dashboard stats
 export const getDashboardStats = asyncHandler(async (req, res) => {
@@ -19,6 +20,7 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
       media,
       contacts,
       resumes,
+      metas
     ] = await Promise.all([
       UserModel.countDocuments(),
       BlogModel.countDocuments(),
@@ -27,6 +29,7 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
       MediaModel.countDocuments(),
       ContactModel.countDocuments(),
       ResumeModel.countDocuments(),
+      MetaModel.countDocuments(),
     ]);
 
     return res.status(200).json({
@@ -40,6 +43,7 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
         media,
         contacts,
         resumes,
+        metas,
       },
     });
   } catch (error) {

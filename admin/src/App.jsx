@@ -24,6 +24,8 @@ import ResumeListPage from './pages/Resume/ResumeListPage';
 import ContactListPage from './pages/Contact/ContactListPage';
 import ContactDetailPage from './pages/Contact/ContactDetailPage';
 import ResumeDetailPage from './pages/Resume/ResumeDetailPage';
+import MetaListPage from './pages/Meta/MetaListPage';
+import MetaFormPage from './pages/Meta/MetaFormPage';
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -68,6 +70,10 @@ const App = () => {
 
             <Route path="/contact/list" element={<ContactListPage />} />
             <Route path="/contact/detail/:id" element={<ContactDetailPage />} />
+
+            <Route path="/meta/list" element={<MetaListPage />} />
+            <Route path="/meta/add" element={<MetaFormPage />} />
+            <Route path="/meta/update/:id" element={<MetaFormPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </>

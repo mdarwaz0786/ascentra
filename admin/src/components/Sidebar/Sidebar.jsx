@@ -10,6 +10,7 @@ import {
   MdCampaign,
   MdPermMedia,
   MdMenuBook,
+  MdOutlineTravelExplore,
 } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import styles from "./Sidebar.module.css";
@@ -39,6 +40,7 @@ const Sidebar = ({ mobileOpen, setMobileOpen, handleToggleSidebar }) => {
     { label: "Publication", icon: <MdMenuBook />, link: "/publication/list" },
     { label: "Contact Enquiry", icon: <MdContactMail />, link: "/contact/list" },
     { label: "Resume", icon: <MdDescription />, link: "/resume/list" },
+    { label: "Meta", icon: <MdOutlineTravelExplore />, link: "/meta/list" },
   ];
 
   const dropdownRefs = useMemo(() => dropdownData?.map(() => ({ current: null })), []);

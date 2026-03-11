@@ -10,6 +10,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import { useAuth } from "../../context/auth.context";
 import { toast } from "react-toastify";
 import apis from "../../apis/apis";
+import Meta from "../../components/Meta/Meta";
 
 const AddBlogPage = () => {
   const navigate = useNavigate();
@@ -25,6 +26,12 @@ const AddBlogPage = () => {
     fullDescription: "",
     image: null,
     banner: null,
+
+    metaTitle: "",
+    metaDescription: "",
+    metaKeywords: "",
+    metaAuthor: "",
+    metaImage: null,
   });
 
   const handleChange = (e) => {
@@ -61,6 +68,15 @@ const AddBlogPage = () => {
     formData.append("fullDescription", form.fullDescription);
     if (form.image) formData.append("image", form.image);
     if (form.banner) formData.append("banner", form.banner);
+
+    formData.append("metaTitle", form.metaTitle);
+    formData.append("metaDescription", form.metaDescription);
+    formData.append("metaKeywords", form.metaKeywords);
+    formData.append("metaAuthor", form.metaAuthor);
+
+    if (form.metaImage) {
+      formData.append("metaImage", form.metaImage);
+    };
 
     await postData(formData, validToken, true);
   };
@@ -152,6 +168,14 @@ const AddBlogPage = () => {
           height={300}
         />
       </div>
+
+      <h5 className="mt-5 mb-4 text-center">SEO Meta</h5>
+
+      <Meta
+        form={form}
+        setForm={setForm}
+        errors={errors}
+      />
     </FormWrapper>
   );
 };

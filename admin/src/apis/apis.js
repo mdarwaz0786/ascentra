@@ -51,6 +51,13 @@ const apis = {
     getSingle: `${API_BASE_URL}/api/v1/admin/resume`,
     deleteSingle: `${API_BASE_URL}/api/v1/admin/resume`,
   },
+  meta: {
+    create: `${API_BASE_URL}/api/v1/admin/meta`,
+    update: `${API_BASE_URL}/api/v1/admin/meta`,
+    getAll: `${API_BASE_URL}/api/v1/admin/meta`,
+    getSingle: `${API_BASE_URL}/api/v1/admin/meta`,
+    deleteSingle: `${API_BASE_URL}/api/v1/admin/meta`,
+  },
 };
 
 export default apis;
