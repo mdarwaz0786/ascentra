@@ -11,6 +11,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import { useAuth } from "../../context/auth.context";
 import { toast } from "react-toastify";
 import apis, { API_BASE_URL } from "../../apis/apis";
+import Meta from "../../components/Meta/Meta";
 
 const UpdateBlogPage = () => {
   const navigate = useNavigate();
@@ -37,6 +38,12 @@ const UpdateBlogPage = () => {
     fullDescription: "",
     image: null,
     banner: null,
+
+    metaTitle: "",
+    metaDescription: "",
+    metaKeywords: "",
+    metaAuthor: "",
+    metaImage: null,
   });
 
   useEffect(() => {
@@ -51,6 +58,12 @@ const UpdateBlogPage = () => {
         fullDescription: blog.fullDescription || "",
         image: blog?.image ? `${API_BASE_URL}/${blog?.image}` : null,
         banner: blog?.banner ? `${API_BASE_URL}/${blog?.banner}` : null,
+
+        metaTitle: blog?.meta?.metaTitle || "",
+        metaDescription: blog?.meta?.metaDescription || "",
+        metaKeywords: blog?.meta?.metaKeywords || "",
+        metaAuthor: blog?.meta?.metaAuthor || "",
+        metaImage: blog?.meta?.metaImage ? `${API_BASE_URL}/${blog?.meta?.metaImage}` : null,
       });
     }
   }, [data]);
@@ -87,9 +100,17 @@ const UpdateBlogPage = () => {
     formData.append("time", form.time);
     formData.append("shortDescription", form.shortDescription);
     formData.append("fullDescription", form.fullDescription);
-
     if (form.image) formData.append("image", form.image);
     if (form.banner) formData.append("banner", form.banner);
+
+    formData.append("metaTitle", form.metaTitle);
+    formData.append("metaDescription", form.metaDescription);
+    formData.append("metaKeywords", form.metaKeywords);
+    formData.append("metaAuthor", form.metaAuthor);
+
+    if (form.metaImage) {
+      formData.append("metaImage", form.metaImage);
+    };
 
     await updateData(formData, validToken, true);
   };
@@ -179,6 +200,14 @@ const UpdateBlogPage = () => {
           height={300}
         />
       </div>
+
+      <h5 className="mt-5 mb-4 text-center">SEO Meta</h5>
+
+      <Meta
+        form={form}
+        setForm={setForm}
+        errors={errors}
+      />
     </FormWrapper>
   );
 };

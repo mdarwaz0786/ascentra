@@ -146,7 +146,12 @@ export const getPublicationById = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Publication not found");
   }
 
-  return res.status(200).json({ success: true, message: "Data fetched successfully", data: publication });
+  const meta = await MetaModel.findOne({
+    slug: publication?.slug,
+    pageName: "publication-detail",
+  });
+
+  return res.status(200).json({ success: true, message: "Data fetched successfully", data: { ...publication.toObject(), meta } });
 });
 
 // Update publication

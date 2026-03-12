@@ -1,5 +1,6 @@
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
+import SeoMeta from "../../components/Meta/SeoMeta";
 import Navbar from "../../components/Navbar/Navbar";
 import ServiceCard from "../../components/Service/ServiceCard";
 import ServiceHeader from "../../components/Service/ServiceHeader";
@@ -31,6 +32,7 @@ const MarketExpansionServicePage = () => {
 
   return (
     <>
+      <SeoMeta pageName="operational-and-compliance-support" />
       <Navbar />
       <Hero src="/banner/sb4.png" />
       <div className="container py-5">

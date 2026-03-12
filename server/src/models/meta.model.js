@@ -14,6 +14,8 @@ const metaSchema = new mongoose.Schema({
       "media-detail",
       "news",
       "news-detail",
+      "event",
+      "event-detail",
       "about-us",
       "contact-us",
       "our-team",
@@ -26,13 +28,11 @@ const metaSchema = new mongoose.Schema({
       "events-outreach-and-engagement",
       "operational-and-compliance-support",
     ],
-    required: [true, "Page name is required"],
     index: true,
   },
   metaTitle: {
     type: String,
     trim: true,
-    required: [true, "Meta title is required"],
   },
   slug: {
     type: String,
@@ -43,12 +43,10 @@ const metaSchema = new mongoose.Schema({
   metaDescription: {
     type: String,
     trim: true,
-    required: [true, "Meta description is required"],
   },
   metaKeywords: {
     type: String,
     trim: true,
-    required: [true, "Meta keywords is required"],
   },
   metaAuthor: {
     type: String,

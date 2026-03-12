@@ -18,7 +18,7 @@ const MetaListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = parseInt(searchParams.get("page")) || 1;
-  const limit = parseInt(searchParams.get("limit")) || 10;
+  const limit = parseInt(searchParams.get("limit")) || 15;
   const search = searchParams.get("search") || "";
 
   const fetchDataUrl = apis.meta.getAll;
@@ -85,6 +85,37 @@ const MetaListPage = () => {
   const meta = data?.data || [];
   const total = data?.pagination?.total || 0;
 
+  const pageOptions = [
+    { key: "home", value: "Home" },
+    { key: "about-us", value: "About Us" },
+    { key: "contact-us", value: "Contact Us" },
+    { key: "our-team", value: "Our Team" },
+    { key: "our-growth-framework", value: "Our Growth Framework" },
+    { key: "publication", value: "Publication" },
+    { key: "media", value: "Media" },
+    { key: "news-and-blog", value: "News & Blog" },
+    { key: "career", value: "Career" },
+    {
+      key: "research-academic-and-innovation-partnerships",
+      value: "Research Academic & Innovation Partnerships",
+    },
+    {
+      key: "in-country-representation-and-market-growth",
+      value: "In Country Representation & Market Growth",
+    },
+    {
+      key: "events-outreach-and-engagement",
+      value: "Events Outreach & Engagement",
+    },
+    {
+      key: "operational-and-compliance-support",
+      value: "Operational & Compliance Support",
+    },
+  ];
+  const pageNameMap = Object.fromEntries(
+    pageOptions.map(({ key, value }) => [key, value])
+  );
+
   return (
     <div className="container mt-1">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -98,7 +129,6 @@ const MetaListPage = () => {
           <tr>
             <th>#</th>
             <th>Page Name</th>
-            <th>Meta Title</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -108,8 +138,7 @@ const MetaListPage = () => {
             meta?.map((item, index) => (
               <tr key={item?._id}>
                 <td>{index + 1 + (params.page - 1) * params.limit}</td>
-                <td>{item?.pageName}</td>
-                <td>{item?.metaTitle}</td>
+                <td>{pageNameMap[item?.pageName] || item?.pageName}</td>
                 <td>
                   <StatusToggle
                     id={item?._id}

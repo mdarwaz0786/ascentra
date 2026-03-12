@@ -9,6 +9,7 @@ import PublicationCard from "../../components/Publication/PublicationCard";
 import { shareContent } from "../../helpers/shareContent";
 import { formatDate } from "../../helpers/formatDate";
 import Loading from "../../components/Loading/Loading";
+import SeoMeta from "../../components/Meta/SeoMeta";
 
 const PublicationPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,6 +39,7 @@ const PublicationPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="publication" />
       <Navbar />
       <Hero src="/banner/Publications2.png" />
       <div className="container my-5">

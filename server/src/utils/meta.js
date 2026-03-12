@@ -19,6 +19,7 @@ export const upsertMeta = async ({
   const existingMeta = await MetaModel.findOne(query);
 
   if (existingMeta) {
+    existingMeta.pageName = pageName || existingMeta?.pageName;
     existingMeta.metaTitle = metaTitle || existingMeta?.metaTitle;
     existingMeta.metaDescription = metaDescription || existingMeta?.metaDescription;
     existingMeta.metaKeywords = metaKeywords || existingMeta?.metaKeywords;

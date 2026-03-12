@@ -10,6 +10,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import { useAuth } from "../../context/auth.context";
 import { toast } from "react-toastify";
 import apis, { API_BASE_URL } from "../../apis/apis";
+import Meta from "../../components/Meta/Meta";
 
 const UpdateMediaPage = () => {
   const navigate = useNavigate();
@@ -36,6 +37,12 @@ const UpdateMediaPage = () => {
     source: "",
     shortDescription: "",
     image: null,
+
+    metaTitle: "",
+    metaDescription: "",
+    metaKeywords: "",
+    metaAuthor: "",
+    metaImage: null,
   });
 
   useEffect(() => {
@@ -50,6 +57,12 @@ const UpdateMediaPage = () => {
         source: d.source || "",
         shortDescription: d.shortDescription || "",
         image: d?.image ? `${API_BASE_URL}/${d?.image}` : null,
+
+        metaTitle: d?.meta?.metaTitle || "",
+        metaDescription: d?.meta?.metaDescription || "",
+        metaKeywords: d?.meta?.metaKeywords || "",
+        metaAuthor: d?.meta?.metaAuthor || "",
+        metaImage: d?.meta?.metaImage ? `${API_BASE_URL}/${d?.meta?.metaImage}` : null,
       });
     }
   }, [data]);
@@ -84,8 +97,16 @@ const UpdateMediaPage = () => {
     formData.append("link", form.link);
     formData.append("source", form.source);
     formData.append("shortDescription", form.shortDescription);
-
     if (form.image) formData.append("image", form.image);
+
+    formData.append("metaTitle", form.metaTitle);
+    formData.append("metaDescription", form.metaDescription);
+    formData.append("metaKeywords", form.metaKeywords);
+    formData.append("metaAuthor", form.metaAuthor);
+
+    if (form.metaImage) {
+      formData.append("metaImage", form.metaImage);
+    };
 
     await updateData(formData, validToken, true);
   };
@@ -177,6 +198,14 @@ const UpdateMediaPage = () => {
           rows={8}
         />
       </div>
+
+      <h5 className="mt-5 mb-4 text-center">SEO Meta</h5>
+
+      <Meta
+        form={form}
+        setForm={setForm}
+        errors={errors}
+      />
     </FormWrapper>
   );
 };

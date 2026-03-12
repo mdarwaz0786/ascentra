@@ -1,4 +1,5 @@
 import Footer from "../../components/Footer/Footer";
+import SeoMeta from "../../components/Meta/SeoMeta";
 import Navbar from "../../components/Navbar/Navbar";
 import TestimonialCard from "../../components/Testimonial/TestimonialCard";
 
@@ -43,6 +44,7 @@ const TestimonialPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="our-team" />
       <Navbar />
       <div className="py-5" style={{ background: "#f5f5f5" }}>
         <div className="">

@@ -10,7 +10,7 @@ const ServiceSection = () => {
       id: 1,
       img: "/service/service1.png",
       title: "Research, Academic & Innovation Partnerships",
-      navigate: "market-development",
+      navigate: "research-academic-and-innovation-partnerships",
       items: [
         "Advance your institution’s global research and innovation ambitions across borders.",
         "Identify and connect with aligned academic, industry and research collaborators.",
@@ -23,7 +23,7 @@ const ServiceSection = () => {
       id: 2,
       img: "/service/service2.png",
       title: "In-Country Representation & Market Growth",
-      navigate: "market-entry",
+      navigate: "in-country-representation-and-market-growth",
       items: [
         "Establish and manage your dedicated in-country presence with experienced local teams.",
         "Design and execute targeted student recruitment and marketing strategies.",
@@ -36,7 +36,7 @@ const ServiceSection = () => {
       id: 3,
       img: "/service/service3.png",
       title: "Events, Outreach & Engagement",
-      navigate: "market-presence",
+      navigate: "events-outreach-and-engagement",
       items: [
         "Conceptualise and deliver high-impact institutional and conferences and networking events.",
         "Organise alumni meets, partner roundtables, graduation ceremonies, and leadership visits.",
@@ -49,7 +49,7 @@ const ServiceSection = () => {
       id: 4,
       img: "/service/service4.png",
       title: "Operational & Compliance Support",
-      navigate: "market-expansion",
+      navigate: "operational-and-compliance-support",
       items: [
         "Provide end-to-end operational support for seamless market presence.",
         "Guide on regulatory, policy and education-sector compliance requirements.",

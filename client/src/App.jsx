@@ -27,20 +27,20 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about-us" element={<AboutusPage />} />
         <Route path="/contact-us" element={<ContactusPage />} />
-        <Route path="/market-development" element={<MarketDevelopmentServicePage />} />
-        <Route path="/market-entry" element={<MarketEntryServicePage />} />
-        <Route path="/market-presence" element={<MarketPresenceServicePage />} />
-        <Route path="/market-expansion" element={<MarketExpansionServicePage />} />
+        <Route path="/research-academic-and-innovation-partnerships" element={<MarketDevelopmentServicePage />} />
+        <Route path="/in-country-representation-and-market-growth" element={<MarketEntryServicePage />} />
+        <Route path="/events-outreach-and-engagement" element={<MarketPresenceServicePage />} />
+        <Route path="/operational-and-compliance-support" element={<MarketExpansionServicePage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/media/:id" element={<MediaDetailPage />} />
         <Route path="/event" element={<EventPage />} />
         <Route path="/publication" element={<PublicationPage />} />
         <Route path="/publication/:slug" element={<PublicationDetailPage />} />
-        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/news-and-blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogDetailPage />} />
         <Route path="/news/:slug" element={<NewsDetailPage />} />
         <Route path="/career" element={<CareerPage />} />
-        <Route path="/our-core-strength" element={<TestimonialPage />} />
+        <Route path="/our-team" element={<TestimonialPage />} />
         <Route path="/our-growth-framework" element={<GrowthFrameworkPage />} />
       </Routes>
     </>

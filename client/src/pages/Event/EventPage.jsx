@@ -2,6 +2,7 @@ import LoadMoreButton from "../../components/Button/LoadMoreButton";
 import EventCard from "../../components/Event/EventCard";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
+import SeoMeta from "../../components/Meta/SeoMeta";
 import Navbar from "../../components/Navbar/Navbar";
 
 const EventPage = () => {
@@ -46,6 +47,7 @@ const EventPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="event" />
       <Navbar />
       <Hero src="/banner/Event.png" />
       <div className="container my-5">

@@ -38,6 +38,12 @@ const UpdatePublicationPage = () => {
     fullDescription: "",
     image: null,
     banner: null,
+
+    metaTitle: "",
+    metaDescription: "",
+    metaKeywords: "",
+    metaAuthor: "",
+    metaImage: null,
   });
 
   useEffect(() => {
@@ -53,6 +59,12 @@ const UpdatePublicationPage = () => {
         fullDescription: d.fullDescription || "",
         image: d?.image ? `${API_BASE_URL}/${d?.image}` : null,
         banner: d?.banner ? `${API_BASE_URL}/${d?.banner}` : null,
+
+        metaTitle: d?.meta?.metaTitle || "",
+        metaDescription: d?.meta?.metaDescription || "",
+        metaKeywords: d?.meta?.metaKeywords || "",
+        metaAuthor: d?.meta?.metaAuthor || "",
+        metaImage: d?.meta?.metaImage ? `${API_BASE_URL}/${d?.meta?.metaImage}` : null,
       });
     }
   }, [data]);
@@ -91,9 +103,17 @@ const UpdatePublicationPage = () => {
     formData.append("tags", form.tags);
     formData.append("shortDescription", form.shortDescription);
     formData.append("fullDescription", form.fullDescription);
-
     if (form.image) formData.append("image", form.image);
     if (form.banner) formData.append("banner", form.banner);
+
+    formData.append("metaTitle", form.metaTitle);
+    formData.append("metaDescription", form.metaDescription);
+    formData.append("metaKeywords", form.metaKeywords);
+    formData.append("metaAuthor", form.metaAuthor);
+
+    if (form.metaImage) {
+      formData.append("metaImage", form.metaImage);
+    };
 
     await updateData(formData, validToken, true);
   };
@@ -194,6 +214,14 @@ const UpdatePublicationPage = () => {
           height={300}
         />
       </div>
+
+      <h5 className="mt-5 mb-4 text-center">SEO Meta</h5>
+
+      <Meta
+        form={form}
+        setForm={setForm}
+        errors={errors}
+      />
     </FormWrapper>
   );
 };

@@ -8,6 +8,7 @@ import { formatDate } from "../../helpers/formatDate";
 import useFetchData from "../../hooks/useFetchData";
 import apis from "../../apis/apis";
 import Loading from "../../components/Loading/Loading";
+import SeoMeta from "../../components/Meta/SeoMeta";
 
 const MediaPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,6 +37,7 @@ const MediaPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="media" />
       <Navbar />
       <Hero src="/banner/Media2.png" />
       <div className="container my-5">

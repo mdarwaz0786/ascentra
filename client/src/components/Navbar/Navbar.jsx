@@ -45,7 +45,8 @@ const Navbar = () => {
               <a
                 className={`nav-link dropdown-link
                    ${location.pathname == "/about-us" ||
-                    location.pathname == "/our-core-strength"
+                    location.pathname == "/our-team" ||
+                    location.pathname == "/our-growth-framework"
                     ? "active-link"
                     : ""}`
                 }
@@ -60,7 +61,7 @@ const Navbar = () => {
 
               <ul className="dropdown-menu modern-dropdown">
                 <li><Link className="dropdown-item" to="/about-us">About Us</Link></li>
-                <li><Link className="dropdown-item" to="/our-core-strength">Our Team</Link></li>
+                <li><Link className="dropdown-item" to="/our-team">Our Team</Link></li>
                 <li><Link className="dropdown-item" to="/our-growth-framework">Our Growth Framework</Link></li>
               </ul>
             </li>
@@ -71,10 +72,10 @@ const Navbar = () => {
             >
               <a
                 className={`nav-link dropdown-link
-                   ${location.pathname == "/market-development" ||
-                    location.pathname == "/market-entry" ||
-                    location.pathname == "/market-presence" ||
-                    location.pathname == "/market-expansion"
+                   ${location.pathname == "/research-academic-and-innovation-partnerships" ||
+                    location.pathname == "/in-country-representation-and-market-growth" ||
+                    location.pathname == "/events-outreach-and-engagement" ||
+                    location.pathname == "/operational-and-compliance-support"
                     ? "active-link"
                     : ""}`
                 }
@@ -88,10 +89,10 @@ const Navbar = () => {
               </a>
 
               <ul className="dropdown-menu modern-dropdown">
-                <li><Link className="dropdown-item" to="/market-development">Research, Academic & Innovation Partnerships</Link></li>
-                <li><Link className="dropdown-item" to="/market-entry">In-Country Representation & Market Growth</Link></li>
-                <li><Link className="dropdown-item" to="/market-presence">Events, Outreach & Engagement</Link></li>
-                <li><Link className="dropdown-item" to="/market-expansion">Operational & Compliance Support</Link></li>
+                <li><Link className="dropdown-item" to="/research-academic-and-innovation-partnerships">Research, Academic & Innovation Partnerships</Link></li>
+                <li><Link className="dropdown-item" to="/in-country-representation-and-market-growth">In-Country Representation & Market Growth</Link></li>
+                <li><Link className="dropdown-item" to="/events-outreach-and-engagement">Events, Outreach & Engagement</Link></li>
+                <li><Link className="dropdown-item" to="/operational-and-compliance-support">Operational & Compliance Support</Link></li>
               </ul>
             </li>
 
@@ -117,7 +118,7 @@ const Navbar = () => {
 
               <ul className="dropdown-menu modern-dropdown">
                 <li><Link className="dropdown-item" to="/media">Media</Link></li>
-                <li><Link className="dropdown-item" to="/blog">News & Blog</Link></li>
+                <li><Link className="dropdown-item" to="/news-and-blog">News & Blog</Link></li>
               </ul>
             </li>
 

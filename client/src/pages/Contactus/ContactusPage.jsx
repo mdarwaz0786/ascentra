@@ -7,6 +7,7 @@ import useCreate from "../../hooks/useCreate";
 import useFormValidation from "../../hooks/useFormValidation";
 import apis from "../../apis/apis";
 import { toast } from "react-toastify";
+import SeoMeta from "../../components/Meta/SeoMeta";
 
 const ContactusPage = () => {
   const { postData, response, postError } = useCreate(apis.contact.create);
@@ -60,6 +61,7 @@ const ContactusPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="contact-us" />
       <Navbar />
       <Hero src="/banner/Contact.png" />
       <div className="container-fluid p-0">

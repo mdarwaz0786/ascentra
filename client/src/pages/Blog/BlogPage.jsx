@@ -9,6 +9,7 @@ import { shareContent } from "../../helpers/shareContent";
 import useFetchData from "../../hooks/useFetchData";
 import apis from "../../apis/apis";
 import Loading from "../../components/Loading/Loading";
+import SeoMeta from "../../components/Meta/SeoMeta";
 
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,6 +51,7 @@ const BlogPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="news-and-blog" />
       <Navbar />
       <Hero src="/banner/NewsAndBlog.png" />
       <div className="container my-5">

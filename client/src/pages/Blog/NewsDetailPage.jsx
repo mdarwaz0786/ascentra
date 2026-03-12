@@ -6,6 +6,7 @@ import apis from "../../apis/apis";
 import ContentDetail from "../../components/ContentDetail/ContentDetail";
 import Hero from "../../components/Hero/Hero";
 import Loading from "../../components/Loading/Loading";
+import SeoMeta from "../../components/Meta/SeoMeta";
 
 const NewsDetailPage = () => {
   const { slug } = useParams();
@@ -18,6 +19,7 @@ const NewsDetailPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="news-detail" slug={d?.slug} />
       <Navbar />
       <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${d?.banner}`} />
       {isLoading ? (

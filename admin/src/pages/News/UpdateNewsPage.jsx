@@ -11,6 +11,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import { useAuth } from "../../context/auth.context";
 import { toast } from "react-toastify";
 import apis, { API_BASE_URL } from "../../apis/apis";
+import Meta from "../../components/Meta/Meta";
 
 const UpdateNewsPage = () => {
   const navigate = useNavigate();
@@ -37,20 +38,32 @@ const UpdateNewsPage = () => {
     fullDescription: "",
     image: null,
     banner: null,
+
+    metaTitle: "",
+    metaDescription: "",
+    metaKeywords: "",
+    metaAuthor: "",
+    metaImage: null,
   });
 
   useEffect(() => {
     if (data?.success && data?.data) {
-      const blog = data?.data;
+      const news = data?.data;
 
       setForm({
-        title: blog.title || "",
-        date: blog.date ? blog.date.split("T")[0] : "",
-        time: blog.time || "",
-        shortDescription: blog.shortDescription || "",
-        fullDescription: blog.fullDescription || "",
-        image: blog?.image ? `${API_BASE_URL}/${blog?.image}` : null,
-        banner: blog?.banner ? `${API_BASE_URL}/${blog?.banner}` : null,
+        title: news.title || "",
+        date: news.date ? news.date.split("T")[0] : "",
+        time: news.time || "",
+        shortDescription: news.shortDescription || "",
+        fullDescription: news.fullDescription || "",
+        image: news?.image ? `${API_BASE_URL}/${news?.image}` : null,
+        banner: news?.banner ? `${API_BASE_URL}/${news?.banner}` : null,
+
+        metaTitle: news?.meta?.metaTitle || "",
+        metaDescription: news?.meta?.metaDescription || "",
+        metaKeywords: news?.meta?.metaKeywords || "",
+        metaAuthor: news?.meta?.metaAuthor || "",
+        metaImage: news?.meta?.metaImage ? `${API_BASE_URL}/${news?.meta?.metaImage}` : null,
       });
     }
   }, [data]);
@@ -87,9 +100,17 @@ const UpdateNewsPage = () => {
     formData.append("time", form.time);
     formData.append("shortDescription", form.shortDescription);
     formData.append("fullDescription", form.fullDescription);
-
     if (form.image) formData.append("image", form.image);
     if (form.banner) formData.append("banner", form.banner);
+
+    formData.append("metaTitle", form.metaTitle);
+    formData.append("metaDescription", form.metaDescription);
+    formData.append("metaKeywords", form.metaKeywords);
+    formData.append("metaAuthor", form.metaAuthor);
+
+    if (form.metaImage) {
+      formData.append("metaImage", form.metaImage);
+    };
 
     await updateData(formData, validToken, true);
   };
@@ -179,6 +200,14 @@ const UpdateNewsPage = () => {
           height={300}
         />
       </div>
+
+      <h5 className="mt-5 mb-4 text-center">SEO Meta</h5>
+
+      <Meta
+        form={form}
+        setForm={setForm}
+        errors={errors}
+      />
     </FormWrapper>
   );
 };

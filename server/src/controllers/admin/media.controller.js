@@ -137,7 +137,12 @@ export const getMediaById = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Media not found");
   }
 
-  return res.status(200).json({ success: true, message: "Data fetched successfully", data: media });
+  const meta = await MetaModel.findOne({
+    slug: media?.slug,
+    pageName: "media-detail",
+  });
+
+  return res.status(200).json({ success: true, message: "Data fetched successfully", data: { ...media.toObject(), meta } });
 });
 
 // Update media

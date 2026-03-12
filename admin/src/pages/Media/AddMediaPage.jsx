@@ -9,6 +9,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import { useAuth } from "../../context/auth.context";
 import { toast } from "react-toastify";
 import apis from "../../apis/apis";
+import Meta from "../../components/Meta/Meta";
 
 const AddMediaPage = () => {
   const navigate = useNavigate();
@@ -24,6 +25,12 @@ const AddMediaPage = () => {
     source: "",
     shortDescription: "",
     image: null,
+
+    metaTitle: "",
+    metaDescription: "",
+    metaKeywords: "",
+    metaAuthor: "",
+    metaImage: null,
   });
 
   const handleChange = (e) => {
@@ -58,6 +65,15 @@ const AddMediaPage = () => {
     formData.append("source", form.source);
     formData.append("shortDescription", form.shortDescription);
     if (form.image) formData.append("image", form.image);
+
+    formData.append("metaTitle", form.metaTitle);
+    formData.append("metaDescription", form.metaDescription);
+    formData.append("metaKeywords", form.metaKeywords);
+    formData.append("metaAuthor", form.metaAuthor);
+
+    if (form.metaImage) {
+      formData.append("metaImage", form.metaImage);
+    };
 
     await postData(formData, validToken, true);
   };
@@ -150,6 +166,14 @@ const AddMediaPage = () => {
           rows={8}
         />
       </div>
+
+      <h5 className="mt-5 mb-4 text-center">SEO Meta</h5>
+
+      <Meta
+        form={form}
+        setForm={setForm}
+        errors={errors}
+      />
     </FormWrapper>
   );
 };

@@ -137,11 +137,18 @@ export const updateMeta = asyncHandler(async (req, res) => {
     metaDescription,
     metaKeywords,
     metaAuthor,
+    pageName,
   } = req.body;
 
   const meta = await MetaModel.findById(req.params.id);
   if (!meta) {
     throw new ApiError(404, "Meta not found");
+  }
+
+  const existingMeta = await MetaModel.findOne({ pageName, _id: { $ne: meta?._id } });
+
+  if (existingMeta) {
+    throw new ApiError(404, `${pageName} page meta has already exists`);
   }
 
   if (req.files?.metaImage?.[0]) {
@@ -161,6 +168,7 @@ export const updateMeta = asyncHandler(async (req, res) => {
     meta.slug = newSlug;
   }
 
+  meta.pageName = pageName || meta?.pageName;
   meta.metaTitle = metaTitle || meta?.metaTitle;
   meta.metaDescription = metaDescription || meta?.metaDescription;
   meta.metaKeywords = metaKeywords || meta?.metaKeywords;

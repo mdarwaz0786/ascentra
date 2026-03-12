@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import ContentDetail from "../../components/ContentDetail/ContentDetail";
 import Hero from "../../components/Hero/Hero";
 import Loading from "../../components/Loading/Loading";
+import SeoMeta from "../../components/Meta/SeoMeta";
 
 const MediaDetailPage = () => {
   const { slug } = useParams();
@@ -18,6 +19,7 @@ const MediaDetailPage = () => {
 
   return (
     <>
+      <SeoMeta pageName="media-detail" slug={d?.slug} />
       <Navbar />
       <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${d?.banner}`} />
       {isLoading ? (

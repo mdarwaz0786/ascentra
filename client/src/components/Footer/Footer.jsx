@@ -31,7 +31,7 @@ const Footer = () => {
               <li><Link to="/about-us">About Us</Link></li>
               <li><Link to="/contact-us">Contact Us</Link></li>
               <li><Link to="/career">Careers</Link></li>
-              <li><Link to="/our-core-strength">Our Team</Link></li>
+              <li><Link to="/our-team">Our Team</Link></li>
             </ul>
           </div>
 
@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="col-lg-2 col-md-6">
             <h6 className="footer-title">Media</h6>
             <ul className="footer-links">
-              <li><Link to="/blog">News & Blog</Link></li>
+              <li><Link to="/news-and-blog">News & Blog</Link></li>
               <li><Link to="/media">Media</Link></li>
               {/* <li><Link to="/event">Events</Link></li> */}
               <li><Link to="/publication">Publications</Link></li>

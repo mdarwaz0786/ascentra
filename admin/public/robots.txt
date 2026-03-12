@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aceascentra.com/sitemap.xml

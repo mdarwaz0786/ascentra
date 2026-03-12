@@ -23,6 +23,9 @@ const apis = {
   contact: {
     create: `${API_BASE_URL}/api/v1/user/contact`,
   },
+  meta: {
+    getSingle: `${API_BASE_URL}/api/v1/user/meta`,
+  },
 };
 
 export default apis;

@@ -144,7 +144,12 @@ export const getNewsById = asyncHandler(async (req, res) => {
     throw new ApiError(404, "News not found");
   }
 
-  return res.status(200).json({ success: true, message: "Data fetched successfully", data: news });
+  const meta = await MetaModel.findOne({
+    slug: news?.slug,
+    pageName: "news-detail",
+  });
+
+  return res.status(200).json({ success: true, message: "Data fetched successfully", data: { ...news.toObject(), meta } });
 });
 
 // Update news

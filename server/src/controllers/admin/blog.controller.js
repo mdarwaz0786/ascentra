@@ -144,7 +144,12 @@ export const getBlogById = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Blog not found");
   }
 
-  return res.status(200).json({ success: true, message: "Data fetched successfully", data: blog });
+  const meta = await MetaModel.findOne({
+    slug: blog?.slug,
+    pageName: "blog-detail",
+  });
+
+  return res.status(200).json({ success: true, message: "Data fetched successfully", data: { ...blog.toObject(), meta } });
 });
 
 // Update blog
