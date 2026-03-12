@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import apis, { API_BASE_URL } from "../../apis/apis";
 import { getCanonicalUrl } from "../../helpers/getCanonicalUrl";
+import { generateSchema } from "../../helpers/generateSchema";
 
 const SeoMeta = ({ slug = null, pageName = null }) => {
   const [meta, setMeta] = useState(null);
@@ -30,12 +31,24 @@ const SeoMeta = ({ slug = null, pageName = null }) => {
     fetchMeta();
   }, [slug, pageName]);
 
+  if (!meta) return null;
+
   const canonicalUrl = getCanonicalUrl(meta?.canonicalUrl, pageName, slug);
   const imageUrl = meta?.metaImage
     ? `${API_BASE_URL}/${meta?.metaImage}`
     : `${meta?.canonicalUrl || "https://aceascentra.com"}/logo.png`;
 
-  if (!meta) return null;
+  const schemaData = generateSchema({
+    pageName,
+    metaTitle: meta?.metaTitle,
+    metaDescription: meta?.metaDescription,
+    metaAuthor: meta?.metaAuthor,
+    canonicalUrl,
+    imageUrl,
+    slug,
+    createdAt: meta?.createdAt,
+    updatedAt: meta?.updatedAt,
+  });
 
   return (
     <Helmet>
@@ -67,36 +80,8 @@ const SeoMeta = ({ slug = null, pageName = null }) => {
       <meta name="twitter:image:alt" content={meta?.metaTitle} />
       <meta name="twitter:url" content={canonicalUrl} />
 
-      {/* Structured Data */}
       <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          ...(slug
-            ? {
-              "@type": "Article",
-              headline: meta?.metaTitle,
-              image: imageUrl,
-              author: {
-                "@type": "Organization",
-                name: "Ace Ascentra"
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Ace Ascentra",
-                logo: {
-                  "@type": "ImageObject",
-                  url: `${meta?.canonicalUrl}/logo.png`
-                }
-              },
-              mainEntityOfPage: canonicalUrl
-            }
-            : {
-              "@type": "Organization",
-              name: "Ace Ascentra",
-              url: "https://aceascentra.com",
-              logo: `${meta?.canonicalUrl}/logo.png`
-            })
-        })}
+        {JSON.stringify(schemaData)}
       </script>
     </Helmet>
   );
