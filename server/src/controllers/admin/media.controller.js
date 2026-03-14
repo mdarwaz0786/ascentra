@@ -207,12 +207,13 @@ export const updateMedia = asyncHandler(async (req, res) => {
   await media.save();
 
   await upsertMeta({
+    pageName: "media-detail",
     metaTitle,
     metaDescription,
     metaKeywords,
     metaAuthor,
     metaImage: metaImagePath,
-    slug: newSlug,
+    slug: newSlug || media?.slug,
     userId: req.user?._id,
   });
 

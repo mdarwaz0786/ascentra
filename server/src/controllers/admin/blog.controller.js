@@ -219,12 +219,13 @@ export const updateBlog = asyncHandler(async (req, res) => {
   await blog.save();
 
   await upsertMeta({
+    pagename: "blog-detail",
     metaTitle,
     metaDescription,
     metaKeywords,
     metaAuthor,
     metaImage: metaImagePath,
-    slug: newSlug,
+    slug: newSlug || blog?.slug,
     userId: req.user?._id,
   });
 

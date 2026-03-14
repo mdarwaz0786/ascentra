@@ -219,12 +219,13 @@ export const updateNews = asyncHandler(async (req, res) => {
   await news.save();
 
   await upsertMeta({
+    pageName: "news-detail",
     metaTitle,
     metaDescription,
     metaKeywords,
     metaAuthor,
     metaImage: metaImagePath,
-    slug: newSlug,
+    slug: newSlug || news?.slug,
     userId: req.user?._id,
   });
 
