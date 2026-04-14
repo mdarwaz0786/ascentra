@@ -23,8 +23,8 @@ const TestimonialPage = () => {
     },
     {
       id: 3,
-      description: "Guneet is a leading brand strategy and marketing initiatives with a strong focus on student outreach and engagement. She drives brand positioning, campaign planning, and partnership development to build meaningful connections with young audiences. With a sharp eye for consistency and impact, she ensures all initiatives align with the company’s identity and long-term goals. Her approach blends strategic thinking with executional excellence, contributing to sustained brand growth and visibility.",
-      name: "Guneet Kaur",
+      description: "Guneet has extensive experience in brand strategy and marketing, leading initiatives with a strong focus on student outreach and engagement. She has deep expertise in brand positioning, campaign planning, and partnership development, enabling the creation of meaningful connections with young audiences. With a keen eye for consistency and impact, she ensures that all initiatives align seamlessly with the company’s identity and long-term vision.Her approach combines strategic insight with executional excellence, driving sustained brand growth and enhanced visibility.",
+      name: "Guneet",
       email: "",
       designation: "Founding Partner",
       image: "/testimonial/Guneet.png",
