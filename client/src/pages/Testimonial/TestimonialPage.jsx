@@ -47,31 +47,29 @@ const TestimonialPage = () => {
       <SeoMeta pageName="our-team" />
       <Navbar />
       <div className="py-5" style={{ background: "#f5f5f5" }}>
-        <div className="">
-          {/* ================= SECTION ONE ================= */}
-          <div className="text-center mb-5">
-            <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR FOUNDERS</h2>
-          </div>
+        {/* ================= SECTION ONE ================= */}
+        <div className="text-center mb-5">
+          <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">OUR FOUNDERS</h2>
+        </div>
 
-          <div className="row">
-            {testimonialsSectionOne.map((item, index) => (
-              <div key={item.id} className="col-lg-12 col-md-12 mb-4">
-                <TestimonialCard key={index} index={index} {...item} />
-              </div>
-            ))}
-          </div>
+        <div className="row">
+          {testimonialsSectionOne.map((item, index) => (
+            <div key={item.id} className="col-lg-12 col-md-12 mb-4">
+              <TestimonialCard key={index} index={index} {...item} />
+            </div>
+          ))}
+        </div>
 
-          {/* ================= SECTION TWO ================= */}
-          <div className="text-center mt-5 mb-5">
-            <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">Strategic Advisor (USA)</h2>
-          </div>
-          <div className="row">
-            {testimonialsSectionTwo.map((item, index) => (
-              <div key={item.id} className="col-lg-12 col-md-12 mb-4">
-                <TestimonialCard key={index} index={index} {...item} />
-              </div>
-            ))}
-          </div>
+        {/* ================= SECTION TWO ================= */}
+        <div className="text-center mt-5 mb-5">
+          <h2 style={{ background: "#fff" }} className="fw-semibold mb-3 py-3">Strategic Advisor (USA)</h2>
+        </div>
+        <div className="row">
+          {testimonialsSectionTwo.map((item, index) => (
+            <div key={item.id} className="col-lg-12 col-md-12 mb-4">
+              <TestimonialCard key={index} index={index} {...item} />
+            </div>
+          ))}
         </div>
       </div>
       <Footer />
