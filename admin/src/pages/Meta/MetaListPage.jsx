@@ -89,7 +89,7 @@ const MetaListPage = () => {
     { key: "home", value: "Home" },
     { key: "about-us", value: "About Us" },
     { key: "contact-us", value: "Contact Us" },
-    { key: "our-team", value: "Our Team" },
+    { key: "our-team", value: "Our Founders" },
     { key: "our-growth-framework", value: "Our Growth Framework" },
     { key: "publication", value: "Publication" },
     { key: "media", value: "Media" },
